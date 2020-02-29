@@ -1,10 +1,23 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(./components/UI/fonts/Roboto-Regular.ttf);
+}
+
 :root {
-    --bg-header: #019588;
+    --bg-header: hsl(175, 99%, 29%);
+    --font-h1-color: rgb(129, 129, 129);
+    --link-color: rgb(15, 197, 91);
 }
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+body, html {
+    height: 100%;
 }
 
 .header {
@@ -13,7 +26,9 @@
     background-color: var(--bg-header);
 }
 
-.container {
+.main-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
     width: 1100px;
     height: 600px;
     margin: -100px auto;
