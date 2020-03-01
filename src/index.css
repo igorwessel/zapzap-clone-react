@@ -5,11 +5,13 @@
 
 :root {
     --bg-header: hsl(175, 99%, 29%);
-    --font-h1-color: rgb(129, 129, 129);
+    --font-color: rgb(129, 129, 129);
+    --icon-color: rgb(184, 184, 184);
     --link-color: rgb(15, 197, 91);
     --side-bg-color: rgb(236, 236, 236);
-    --side-border-color: rgb(177, 177, 177);
+    --side-border-color: rgba(177, 177, 177, 0.336);
     --side-header-bg-color: #ededed;
+    --side-container-input-bg-color: #f7f7f7;
 }
 
 * {

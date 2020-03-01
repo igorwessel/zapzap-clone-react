@@ -1,4 +1,5 @@
 .side {
+    box-sizing: content-box;
     width: 100%;
     height: 100%;
     border-right: 1px solid var(--side-border-color);
@@ -12,11 +13,11 @@ button {
 
 .side-header {
     display: flex;
-    align-items: center;
+    position: relative;
     justify-content: flex-end;
-    height: 80px;
+    padding: 12px;
+    height: 120px;
     background-color: var(--side-header-bg-color);
-    border-bottom: 1px solid var(--side-border-color);
 }
 
 .side-avatar {
@@ -24,13 +25,10 @@ button {
 }
 
 .side-avatar img{
+    cursor: pointer;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-}
-
-.side-container-buttons {
-    margin-right: 10px;
 }
 
 .side-container-buttons img{
@@ -38,4 +36,31 @@ button {
     width: 40px;
     height: 40px;
     margin-left: 15px;
+}
+
+.side-container-input > .fas.fa-search {
+    position: absolute;
+    top: 25px;
+    font-size: 0.9rem;
+    padding-left: 10px;
+    color: var(--icon-color);
+}
+
+.side-container-input {
+    position: relative;
+    padding: 15px;
+    background-color: var(--side-container-input-bg-color);
+    border-bottom: 1px solid var(--side-border-color);
+    bottom: 45px;
+}
+
+.side-container-input > input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 18px;
+    padding-left: 35px;
+    font-size: 0.9em;
+    height: 30px;
+    border-radius: 15px;
 }

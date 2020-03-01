@@ -7,6 +7,7 @@ import iconThreePoints from '../../Button/images/icon-three-points.png'
 import avatarExample from '../../Button/images/example-avatar.jpeg'
 
 
+
 const Side = props => {
     return (
         <div className="side">
@@ -20,6 +21,10 @@ const Side = props => {
                     <Button iconImg={iconThreePoints} iconDesc='more options'/>
                 </div>
             </header>
+            <div className="side-container-input">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder='Procurar ou comecar uma nova conversa.' />
+            </div>
         </div>
     )
 }
