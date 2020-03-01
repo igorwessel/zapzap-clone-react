@@ -4,7 +4,7 @@
 
 .logo-messages {
     height: 100%;
-    background-image: url(../Messages/images/logo.png);
+    background-image: url(./images/logo.png);
     background-repeat: no-repeat;
     background-position: 250px 80px;
 }

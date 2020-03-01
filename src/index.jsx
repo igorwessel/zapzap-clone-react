@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/UI/Header/Header'
 import Main from './components/UI/Main/Main'
 import './index.css';
 
@@ -9,7 +8,7 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <div className='header'></div>
                 <Main />
             </React.Fragment>
         );

@@ -1,12 +1,12 @@
 import React from 'react'
-import Contacts from '../Contacts/Contacts'
+import Side from '../Side/Side'
 import Messages from '../Messages/Messages'
 
 
 const Main = (props) => {
     return (
         <div className="main-container">
-            <Contacts />
+            <Side />
             <Messages />
         </div>
     )

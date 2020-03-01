@@ -1,0 +1,25 @@
+.side {
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid rgb(177, 177, 177);
+    background-color: rgb(236, 236, 236);
+}
+
+.side-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 80px;
+    background-color: green;
+}
+
+.side-container-buttons button{
+    outline: none;
+    border: none;
+}
+
+.side-container-buttons img{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+}
