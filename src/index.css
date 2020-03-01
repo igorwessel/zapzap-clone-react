@@ -4,6 +4,7 @@
 }
 
 :root {
+    --profile-bg-header: hsl(157, 92%, 42%);
     --bg-header: hsl(175, 99%, 29%);
     --font-color: rgb(129, 129, 129);
     --icon-color: rgb(184, 184, 184);

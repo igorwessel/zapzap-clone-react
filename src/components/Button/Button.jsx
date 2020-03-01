@@ -4,7 +4,10 @@ import React from 'react'
 const Button = props => {
     return(
         <React.Fragment>
-            <button><img src={props.iconImg} alt={props.iconDesc}/></button>
+            <button onClick={props.click}>
+                {props.label}
+                <img src={props.iconImg} alt={props.iconDesc} id={props.iconId}/>
+            </button>
         </React.Fragment>
     );
 }
