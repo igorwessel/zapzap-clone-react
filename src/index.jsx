@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Main from './components/UI/Main/Main'
 import './index.css';
+import Side from './components/UI/Side/Side';
+import Messages from './components/UI/Main/Main';
 
 
 class App extends React.Component {
@@ -9,7 +10,10 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <div className='header'></div>
-                <Main />
+                <div className="main-container">
+                    <Side />
+                    <Messages />
+                </div>
             </React.Fragment>
         );
     }

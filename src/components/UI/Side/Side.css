@@ -40,7 +40,7 @@ button {
 
 .side-container-input > .fas.fa-search {
     position: absolute;
-    top: 25px;
+    top: 21px;
     font-size: 0.9rem;
     padding-left: 10px;
     color: var(--icon-color);
@@ -48,10 +48,10 @@ button {
 
 .side-container-input {
     position: relative;
-    padding: 15px;
+    padding: 10px;
     background-color: var(--side-container-input-bg-color);
     border-bottom: 1px solid var(--side-border-color);
-    bottom: 45px;
+    margin-top: -45px;
 }
 
 .side-container-input > input {
@@ -63,4 +63,11 @@ button {
     font-size: 0.9em;
     height: 30px;
     border-radius: 15px;
+}
+
+.messages-previews {
+    /* min-width: 350px; */
+    max-height: 470px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
