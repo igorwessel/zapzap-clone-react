@@ -1,0 +1,75 @@
+.side-profile{
+    height: 100%;
+    background-color: var(--side-header-bg-color);
+}
+
+.side-profile > header{
+    height: 150px;
+    background-color: var(--profile-bg-header);
+    color: rgb(255, 255, 255);
+}
+
+.side-profile > header > i {
+    position: relative;
+    margin-left: 35px;
+    margin-top: 105px;
+    cursor: pointer;
+}
+
+.side-profile > header > h3 {
+    position: relative;
+    font-weight: normal;
+    left: 9%;
+    bottom: 13.8%;
+    margin-left: 35px;
+}
+
+.side-profile-details {
+    height: 495px;
+    overflow-y: auto;
+}
+
+.side-profile-details-image {
+    padding: 25px;
+    margin-left: 50px;
+}
+
+.side-profile-details-image img {
+    width: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.side-profile-details-name{
+    height: 100px;
+    padding: 15px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.205);
+    background-color: var(--side-container-input-bg-color);
+}
+
+.side-profile-details-message {
+    height: 100px;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: var(--side-container-input-bg-color);
+}
+
+.side-profile-details p {
+    margin-left: 5px;
+    color: var(--font-color-green);
+}
+
+
+.side-profile-details span {
+    position: relative;
+    top: 20px;
+    color: var(--font-color);
+    margin-left: 5px;
+}
+
+.side-profile-details i {
+    position: relative;
+    float: right;
+    top: 20px;
+    color: var(--font-color);
+}

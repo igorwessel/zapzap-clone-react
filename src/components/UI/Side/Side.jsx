@@ -1,12 +1,12 @@
 import React from 'react'
 import './Side.css'
-import Button from '../../Button/Button'
-import Input from '../../Input/Input'
+import Button from '../Button/Button'
+import Input from '../Input/Input'
 import iconStatus from '../../Button/images/icon-status.png'
 import iconMessages from '../../Button/images/icon-messages.png'
 import iconThreePoints from '../../Button/images/icon-three-points.png'
 import avatarExample from '../../Button/images/example-avatar.jpeg'
-import MessagePreview from '../../MessagePreview/MessagePreview'
+import MessagePreview from '../../Message/MessagePreview/MessagePreview'
 import ProfileControl from '../../ProfileControl/ProfileControl'
 
 

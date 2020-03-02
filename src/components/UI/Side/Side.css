@@ -66,8 +66,12 @@ button {
 }
 
 .messages-previews {
-    min-height: 470px;
-    max-height: 470px;
+    height: 470px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+
+.none { 
+    display: none;
 }
