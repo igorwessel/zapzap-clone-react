@@ -33,7 +33,6 @@ class Side extends React.Component {
         })
     }
 
-
     render() {
         const clickedinProfile = this.state.profileControl
         let profileControl;
@@ -59,7 +58,8 @@ class Side extends React.Component {
                         <div className="side-container-buttons">
                             <Button iconImg={iconStatus}
                                 iconDesc='status'
-                                iconId='status' />
+                                iconId='status'
+                                click={this.props.handleStatusClick} />
                             <Button iconImg={iconMessages}
                                 iconDesc='new message'
                                 iconId='newMessage' />

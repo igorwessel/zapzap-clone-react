@@ -9,7 +9,7 @@ class ProfileControl extends React.Component {
 
     render() {
         return (
-            <Anime width={['0', '100%']} >
+            <Anime width={['0', '100%']}>
                 <div className="side-profile">
                     <header>
                         <i className="fas fa-arrow-left"

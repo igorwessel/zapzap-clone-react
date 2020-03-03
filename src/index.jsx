@@ -3,16 +3,48 @@ import ReactDOM from 'react-dom'
 import './index.css';
 import Side from './components/UI/Side/Side';
 import Messages from './components/UI/Main/Main';
+import StatusControl from './components/StatusControl/StatusControl';
 
 
 class App extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: true,
+            statusControl: false
+        }
+        this.handleStatusClick = this.handleStatusClick.bind(this)
+        this.handleCloseStatus = this.handleCloseStatus.bind(this)
+    }
+
+    handleStatusClick(e) {
+        this.setState({
+            statusControl: true,
+            show: false
+        })
+    }
+
+    handleCloseStatus(e) {
+        this.setState({
+            stateControl: false,
+            show: true
+        })
+    }
+
     render() {
+        const clickedinStatus = this.state.statusControl
+        let statusControl;
+
+        if (clickedinStatus) {
+            statusControl = <StatusControl handleCloseStatus={this.handleCloseStatus} />
+        }
         return (
             <React.Fragment>
                 <div className='header'></div>
                 <div className="main-container">
-                    <Side />
-                    <Messages />
+                    {!this.state.show && statusControl}
+                    {this.state.show && <Side handleStatusClick={this.handleStatusClick} />}
+                    {this.state.show && <Messages />}
                 </div>
             </React.Fragment>
         );

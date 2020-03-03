@@ -1,5 +1,6 @@
 .side {
     box-sizing: content-box;
+    display: inline-block;
     width: 100%;
     height: 100%;
     border-right: 1px solid var(--side-border-color);
