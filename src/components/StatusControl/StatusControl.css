@@ -15,7 +15,7 @@
 .border-bottom {
     width: 265px;
     margin: 30px auto 0px auto;
-    border-bottom: 1px solid var(--status-side-grey)
+    border-bottom: 1px solid var(--status-side-grey-60)
 }
 
 .status-side img {
@@ -47,4 +47,13 @@
 .status {
     grid-column: 2;
     background-color: black;
+}
+
+.status i {
+    float: right;
+    padding: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 1.6em;
+    color: white;
 }

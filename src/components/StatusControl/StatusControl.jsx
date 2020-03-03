@@ -18,7 +18,7 @@ class StatusControl extends React.Component {
                     <div className='border-bottom'></div>
                 </div>
                 <div className="status">
-                    <Button label='X' click={this.props.handleCloseStatus} />
+                    <i className="fas fa-times" onClick={this.props.handleCloseStatus}></i>
                 </div>
             </React.Fragment>
         )

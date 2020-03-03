@@ -15,6 +15,7 @@
     --side-header-bg-color: #ededed;
     --side-container-input-bg-color: #f7f7f7;
     --status-side-grey: rgb(151, 151, 151);
+    --status-side-grey-60: rgb(121, 121, 121);
 }
 
 * {
