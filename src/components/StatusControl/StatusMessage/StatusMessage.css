@@ -1,0 +1,36 @@
+.status-side-message {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+    height: 60px;
+}
+
+.status-avatar {
+    align-self: center;
+}
+
+.status-avatar img {
+    margin-left: 25px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.status-message {
+    align-self: center;
+}
+
+.status-message h2 {
+    font-size:1.0em;
+    font-weight: normal;
+    margin-top: -10px;
+    margin-left: 0px;
+}
+
+
+.status-message span {
+    position: relative;
+    color: var(--font-color);
+    top: 3px;
+    margin-left: 15px;
+    font-size: .8em;
+}

@@ -13,9 +13,17 @@
 }
 
 .border-bottom {
-    width: 265px;
+    width: 305px;
     margin: 30px auto 0px auto;
     border-bottom: 1px solid var(--status-side-grey-60)
+}
+
+.status-update-date {
+    position: relative;
+    top: 2px;
+    left: 25px;
+    font-size: .8em;
+    color: var(--status-side-grey);
 }
 
 .status-side img {
@@ -36,7 +44,12 @@
     font-size: 1.05em;
 }
 
-.status-side span {
+.status-side-messages {
+    max-height: 470px;
+    overflow-y: auto;
+}
+
+.status-update {
     position: relative;
     color: var(--status-side-grey);
     top: 5px;
@@ -56,4 +69,10 @@
     cursor: pointer;
     font-size: 1.6em;
     color: white;
+}
+
+.status p {
+    margin-top: 45%;
+    text-align: center;
+    color: var(--status-side-grey-60);
 }
