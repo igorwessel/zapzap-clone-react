@@ -13,10 +13,12 @@ class App extends React.Component {
         super(props)
         this.state = {
             show: true,
-            statusControl: false
+            statusControl: false,
         }
         this.handleStatusClick = this.handleStatusClick.bind(this)
         this.handleCloseStatus = this.handleCloseStatus.bind(this)
+        this.firebase = new Firebase();
+        this.initAuth()
     }
 
     handleStatusClick(e) {
@@ -33,28 +35,34 @@ class App extends React.Component {
         })
     }
 
+    initAuth(){
+        let user;
+        if(!user){
+            this.firebase.initAuth()
+                .then((response) => {
+                    user = response.user;
+                    console.log(user)
+                    document.querySelector('.main-container').style.display = 'grid';
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+        }
+    }
+
     render() {
         const clickedinStatus = this.state.statusControl
-        const firebase = new Firebase();
-
-        firebase.initAuth()
-            .then(response => {
-                console.log(response)
-            })
-            .catch(err => {
-                console.error(err)
-            })
-
             
         let statusControl;
 
         if (clickedinStatus) {
             statusControl = <StatusControl handleCloseStatus={this.handleCloseStatus} />
         }
+
         return (
                 <React.Fragment>
                     <div className='header'></div>
-                    <div className="main-container">
+                    <div className="main-container" style={{display: 'none'}}>
                             {!this.state.show && statusControl}
                             {this.state.show && <Side handleStatusClick={this.handleStatusClick} />}
                             {this.state.show && <Messages />}
