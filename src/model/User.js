@@ -1,4 +1,4 @@
-import { Firebase } from '../Firebase/firebase'
+import Firebase from '../Firebase/index'
 import { Model } from './Model';
 
 export class User extends Model{

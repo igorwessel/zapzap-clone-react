@@ -1,7 +1,8 @@
 import React from 'react';
 import Anime from 'react-anime';
 import './ProfileControl.css'
-import avatarExample from '../UI/Button/images/example-avatar.jpeg'
+import avatarExample from '../UI/Button/images/default-user-image.png'
+import { withFirebaseHOC } from '../../Firebase';
 
 
 
@@ -19,7 +20,7 @@ class ProfileControl extends React.Component {
                     <div className="side-profile-details">
                         <div className="side-profile-details-image">
                             <Anime scale={[.5, .9]} delay={100}>
-                                <img src={avatarExample} alt="" />
+                                <img src={this.props.firebase.currentUser().photoURL} alt="" />
                             </Anime>
                         </div>
                         <div className="side-profile-details-name">
@@ -40,4 +41,4 @@ class ProfileControl extends React.Component {
 }
 
 
-export default ProfileControl
+export default withFirebaseHOC(ProfileControl)
