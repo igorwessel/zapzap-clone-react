@@ -6,6 +6,7 @@ import Messages from './components/UI/Main/Main';
 import StatusControl from './components/StatusControl/StatusControl';
 import { Firebase } from './Firebase/firebase'
 import FirebaseContext from './components/Firebase/FirebaseContext'
+import { User } from './model/User';
 
 
 class App extends React.Component {
@@ -40,9 +41,21 @@ class App extends React.Component {
         if(!user){
             this.firebase.initAuth()
                 .then((response) => {
-                    user = response.user;
-                    console.log(user)
-                    document.querySelector('.main-container').style.display = 'grid';
+
+                    user = new User(response.user.email);
+                    let userRef = User.findByEmail(response.user.email);
+
+                    userRef.set({
+                        name: response.user.displayName,
+                        email: response.user.email,
+                        photo: response.user.photoUrl ? response.user.photoUrl : ''
+
+                    }).then(() => {
+
+                        document.querySelector('.main-container').style.display = 'grid';
+
+                    });
+                    
                 })
                 .catch(err => {
                     console.error(err)

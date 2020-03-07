@@ -20,13 +20,13 @@ export class Firebase {
     }
 
     init(){
-        if(!this.initialized) {
+        if(!window._initializedFirebase) {
             firebase.initializeApp(this._config);
             firebase.analytics();
-            this._initialized = true;
+            window._initializedFirebase = true;
         }
     }
-
+    
     static db(){
         return firebase.firestore();
     }
