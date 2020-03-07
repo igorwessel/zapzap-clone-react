@@ -1,8 +1,9 @@
 import React from 'react'
 import './StatusControl.css'
 import Button from '../UI/Button/Button'
-import avatarImg from '../UI/Button/images/example-avatar.jpeg'
+import avatarImg from '../UI/Button/images/default-user-image.png'
 import StatusMessage from './StatusMessage/StatusMessage'
+import { withFirebaseHOC } from '../../Firebase'
 
 
 class StatusControl extends React.Component {
@@ -12,7 +13,7 @@ class StatusControl extends React.Component {
             <React.Fragment>
                 <div className="status-side">
                     <header>
-                        <Button iconImg={avatarImg} />
+                        <Button iconImg={this.props.firebase.currentUser().photoURL} />
                         <h2>Meu status</h2>
                         <span className='status-update'>Sem atualizações</span>
                     </header>
@@ -23,41 +24,6 @@ class StatusControl extends React.Component {
                             avatarImg={avatarImg}
                             authorMessage='Igor'
                             dateMessage='hoje'/>
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-                        
-                        <StatusMessage 
-                            avatarImg={avatarImg}
-                            authorMessage='Igor'
-                            dateMessage='hoje'/>
-
                     </div>
                     
                 </div>
@@ -70,4 +36,4 @@ class StatusControl extends React.Component {
     };
 }
 
-export default StatusControl
+export default withFirebaseHOC(StatusControl)

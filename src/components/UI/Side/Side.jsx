@@ -5,9 +5,10 @@ import Input from '../Input/Input'
 import iconStatus from '../Button/images/icon-status.png'
 import iconMessages from '../Button/images/icon-messages.png'
 import iconThreePoints from '../Button/images/icon-three-points.png'
-import avatarExample from '../Button/images/example-avatar.jpeg'
+import avatarExample from '../Button/images/default-user-image.png'
 import MessagePreview from '../../Message/MessagePreview/MessagePreview'
 import ProfileControl from '../../ProfileControl/ProfileControl'
+import { withFirebaseHOC } from '../../../Firebase/index'
 
 
 class Side extends React.Component {
@@ -36,6 +37,7 @@ class Side extends React.Component {
     render() {
         const clickedinProfile = this.state.profileControl
         let profileControl;
+        let currentUser = this.props.firebase.currentUser();
 
         if (clickedinProfile) {
             profileControl = <ProfileControl clickHideOverlay={this.handleProfileClickHide} />
@@ -50,9 +52,7 @@ class Side extends React.Component {
                 <div className="side">
                     <header className='side-header'>
                         <div className="side-avatar">
-                            <Button iconImg={avatarExample}
-                                iconDesc='avatar'
-                                iconId='avatarImg'
+                            <Button iconImg={'null' ? avatarExample : currentUser.photoURL}
                                 click={this.handleProfileClick} />
                         </div>
                         <div className="side-container-buttons">
@@ -102,4 +102,4 @@ class Side extends React.Component {
     }
 }
 
-export default Side
+export default withFirebaseHOC(Side)
