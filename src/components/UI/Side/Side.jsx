@@ -36,8 +36,8 @@ class Side extends React.Component {
 
     render() {
         const clickedinProfile = this.state.profileControl
+        let currentUser = this.props.firebase.currentUser()
         let profileControl;
-        let currentUser = this.props.firebase.currentUser();
 
         if (clickedinProfile) {
             profileControl = <ProfileControl clickHideOverlay={this.handleProfileClickHide} />
@@ -52,7 +52,7 @@ class Side extends React.Component {
                 <div className="side">
                     <header className='side-header'>
                         <div className="side-avatar">
-                            <Button iconImg={'null' ? avatarExample : currentUser.photoURL}
+                            <Button iconImg={!currentUser ? avatarExample : currentUser.photoURL}
                                 click={this.handleProfileClick} />
                         </div>
                         <div className="side-container-buttons">
@@ -78,23 +78,6 @@ class Side extends React.Component {
                             authorMessage='Igor'
                             dateMessage={'Hoje'}
                             message={'Opa!'} />
-                        <MessagePreview
-                            avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'Ontem'}
-                            message={'Opa!'} />
-                        <MessagePreview avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'01/03/2020'}
-                            message={'Opa!'} />
-                        <MessagePreview avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'Hoje'}
-                            message={'Bom dia!'} />
-                        <MessagePreview avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'Hoje'}
-                            message={'Lorem ipsum upsum ipsun ipsun ipsun ipsun ipsun ipsun ipsun!'} />
                     </div>
                 </div>
             </React.Fragment>

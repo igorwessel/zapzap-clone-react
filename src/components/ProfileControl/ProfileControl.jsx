@@ -1,8 +1,8 @@
 import React from 'react';
 import Anime from 'react-anime';
 import './ProfileControl.css'
-import avatarExample from '../UI/Button/images/default-user-image.png'
 import { withFirebaseHOC } from '../../Firebase';
+import ProfileControlForm from './Form/ProfileControlForm';
 
 
 
@@ -24,14 +24,10 @@ class ProfileControl extends React.Component {
                             </Anime>
                         </div>
                         <div className="side-profile-details-name">
-                            <p>Nome</p>
+                            <ProfileControlForm />
+                            {/* <p>Nome</p>
                             <span>Igor Wessel</span>
-                            <i className="fas fa-pencil-alt"></i>
-                        </div>
-                        <div className="side-profile-details-message">
-                            <p>Recado</p>
-                            <span>...</span>
-                            <i className="fas fa-pencil-alt"></i>
+                            <i className="fas fa-pencil-alt"></i> */}
                         </div>
                     </div>
                 </div>

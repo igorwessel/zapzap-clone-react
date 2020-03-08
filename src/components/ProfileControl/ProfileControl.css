@@ -48,29 +48,30 @@
     background-color: var(--side-container-input-bg-color);
 }
 
-.side-profile-details-message {
-    height: 100px;
-    margin-top: 25px;
-    padding: 15px;
-    background-color: var(--side-container-input-bg-color);
-}
-
-.side-profile-details p {
+.side-profile-details-name > form label {
     margin-left: 5px;
     color: var(--font-color-green);
 }
 
 
-.side-profile-details span {
+.side-profile-details-name > form input{
     position: relative;
-    top: 20px;
+    top: 35px;
     color: var(--font-color);
-    margin-left: 5px;
+    background-color: var(--side-container-input-bg-color);
+    border: none;
+    outline: none;
+    margin-left: -39px;
 }
 
-.side-profile-details i {
+.side-profile-details-name > form input:focus{
+    border-bottom: 2px solid var(--font-color-green);
+}
+
+.side-profile-details-name > form i {
     position: relative;
+    cursor: pointer;
     float: right;
-    top: 20px;
+    top: 35px;
     color: var(--font-color);
 }
