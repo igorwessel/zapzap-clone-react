@@ -10,7 +10,7 @@ class ProfileControl extends React.Component {
 
     render() {
         return (
-            <Anime width={['0', '100%']}>
+            <Anime width={['0', '100%']} height={'0%'}>
                 <div className="side-profile">
                     <header>
                         <i className="fas fa-arrow-left"
@@ -25,9 +25,6 @@ class ProfileControl extends React.Component {
                         </div>
                         <div className="side-profile-details-name">
                             <ProfileControlForm />
-                            {/* <p>Nome</p>
-                            <span>Igor Wessel</span>
-                            <i className="fas fa-pencil-alt"></i> */}
                         </div>
                     </div>
                 </div>

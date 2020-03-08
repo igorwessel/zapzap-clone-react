@@ -44,17 +44,16 @@ class AppContainer extends React.Component {
                 .then((response) => {
 
                     user = new User(response.user.email);
-                    let userRef = User.findByEmail(response.user.email);
 
-                    userRef.set({
-                        name: response.user.displayName,
-                        email: response.user.email,
-                        photo: response.user.photoURL
-                    }).then(() => {
+                    user.name = response.user.displayName;
+                    user.email = response.user.email;
+                    user.photo = response.user.photoURL;
+                    
+                    user.save().then( () => {
                         this.setState({
-                            showApp:true
+                            showApp: true
                         })
-                    });
+                    })
                     
                 })
                 .catch(err => {

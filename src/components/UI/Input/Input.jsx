@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Input = props => {
-    return(
-        <input type="text" placeholder={props.placeholder}/>
-    );
+class Input extends React.Component{
+    render(){
+        return(
+            <input type="text" placeholder={this.props.placeholder}/>
+        );   
+    }
 }
-
 
 export default Input
