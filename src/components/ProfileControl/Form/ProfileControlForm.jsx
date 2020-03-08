@@ -7,10 +7,10 @@ class ProfileControlForm extends React.Component {
 
     constructor(props){
         super(props)
-        this.user = new User(this.props.firebase.currentUser().email)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleEnableEdit = this.handleEnableEdit.bind(this)
+        this.user = new User(this.props.firebase.currentUser().email);
         this.state={
             value: this.user.name,
             disabled: true
@@ -20,18 +20,20 @@ class ProfileControlForm extends React.Component {
     handleChange(e){
         this.setState({
             value: e.target.value
-        });
+        })
     }
 
-    handleSubmit(e){
-        console.log(this.user.name)
-        console.log(this.user)
+    handleSubmit(e){  
+
+        this.user.name = this.state.value
+        this.user.save()   
+        
         this.setState({
             disabled: true
         })
     }
 
-    handleEnableEdit(e){        
+    handleEnableEdit(e){ 
         this.setState({
             disabled: false
         })
@@ -51,9 +53,9 @@ class ProfileControlForm extends React.Component {
                 <label>
                     Nome
                     <input type="text"
-                           className={borderGreen} 
-                           value={this.state.value} 
-                           onChange={this.handleChange} 
+                           className={borderGreen}
+                           value={this.state.value}
+                           onChange={this.handleChange}
                            disabled={this.state.disabled}/>
                 </label>
                 <i className={iconEditOrSubmit} 

@@ -43,21 +43,28 @@ class AppContainer extends React.Component {
             this.props.firebase.initAuth()
                 .then((response) => {
 
-                    user = new User(response.user.email);
+                    user = new User();
 
-                    user.name = response.user.displayName;
-                    user.email = response.user.email;
-                    user.photo = response.user.photoURL;
-                    
-                    user.save().then( () => {
-                        this.setState({
-                            showApp: true
-                        })
-                    })
-                    
+                    user.getById(response.user.email).then( (user) => {
+                        if(user.exists) {
+                            this.setState({
+                                showApp: true
+                            })
+                            return
+                        } else {
+                            user.name = response.user.displayName;
+                            user.email = response.user.email;
+                            user.photo = response.user.photoURL;
+                            user.save().then( () => {
+                                this.setState({
+                                    showApp: true
+                                })
+                            })
+                        }
+                    });
                 })
                 .catch(err => {
-                    console.error(err)
+                    this.initAuth()
                 })
         }
     }
