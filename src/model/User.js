@@ -22,7 +22,7 @@ export class User extends Model{
     getById(id){
         return new Promise( (s, f) => {
 
-            User.findByEmail(id).onSnapshot( doc => {
+            this.findByEmail(id).onSnapshot( doc => {
 
                 this.fromJSON(doc.data())
                 s(doc)
@@ -32,14 +32,14 @@ export class User extends Model{
     }
 
     save(){
-        return User.findByEmail(this.email).set(this.toJSON())
+        return this.findByEmail(this.email).set(this.toJSON())
     }
 
     static getRef(){
         return Firebase.db().collection('/users')
     }
 
-    static findByEmail(email){
+    findByEmail(email){
 
         return User.getRef().doc(email)
 

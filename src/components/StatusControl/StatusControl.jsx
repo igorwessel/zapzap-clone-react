@@ -13,7 +13,7 @@ class StatusControl extends React.Component {
             <React.Fragment>
                 <div className="status-side">
                     <header>
-                        <Button iconImg={this.props.firebase.currentUser().photoURL} />
+                        <Button iconImg={this.props.firebase.currentUser().photo} />
                         <h2>Meu status</h2>
                         <span className='status-update'>Sem atualizações</span>
                     </header>

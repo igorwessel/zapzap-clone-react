@@ -45,8 +45,8 @@ class AppContainer extends React.Component {
 
                     user = new User();
 
-                    user.getById(response.user.email).then( (user) => {
-                        if(user.exists) {
+                    user.getById(response.user.email).then( (userDb) => {
+                        if(userDb.exists) {
                             this.setState({
                                 showApp: true
                             })

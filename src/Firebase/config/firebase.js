@@ -1,3 +1,5 @@
+import { User } from '../../model/User';
+
 const firebase = require('firebase/app')
 require('firebase/auth')
 require('firebase/firestore')
@@ -45,11 +47,25 @@ const Firebase = {
         return firebase.auth().currentUser
     },
 
+    user: () => {
+        let userAuthenticated = Firebase.currentUser()
+        let user = new User(userAuthenticated.email)
+        return user
+    },
+    
     // firestorage
     db: () => {
         return firebase.firestore()
     },
 
+    getRef: () => {
+        return Firebase.db().collection('/users')
+    },
+
+    findByEmail: (email) => {
+        return Firebase.getRef().doc(email)
+    },
+    
     // hd
     hd: () => {
         return firebase.storage()

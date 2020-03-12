@@ -1,6 +1,5 @@
 import React from 'react'
 import { withFirebaseHOC } from '../../../Firebase'
-import { User } from '../../../model/User'
 
 
 class ProfileControlForm extends React.Component {
@@ -10,9 +9,9 @@ class ProfileControlForm extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleEnableEdit = this.handleEnableEdit.bind(this)
-        this.user = new User(this.props.firebase.currentUser().email);
+        this.firebaseUser = this.props.firebase.currentUser()
         this.state={
-            value: this.user.name,
+            value: '',
             disabled: true
         }
     }
@@ -24,10 +23,10 @@ class ProfileControlForm extends React.Component {
     }
 
     handleSubmit(e){  
+        this.props.firebase.findByEmail(this.firebaseUser.email).update({
+            name: this.state.value
+        })
 
-        this.user.name = this.state.value
-        this.user.save()   
-        
         this.setState({
             disabled: true
         })
@@ -38,11 +37,20 @@ class ProfileControlForm extends React.Component {
             disabled: false
         })
     }
+    
+    componentDidMount(){
+        const { firebase } = this.props
+        firebase.findByEmail(this.firebaseUser.email).onSnapshot( user => {
+            this.setState({
+                value: user.data().name
+            })
+        })
+    }
 
     render(){
         let iconEditOrSubmit = this.state.disabled ? "fas fa-pencil-alt" : "fas fa-check";
         let borderGreen;
-
+        
         if (iconEditOrSubmit === 'fas fa-check') {
             borderGreen = 'border-green-input'
         }
@@ -53,9 +61,9 @@ class ProfileControlForm extends React.Component {
                 <label>
                     Nome
                     <input type="text"
-                           className={borderGreen}
                            value={this.state.value}
                            onChange={this.handleChange}
+                           className={borderGreen}
                            disabled={this.state.disabled}/>
                 </label>
                 <i className={iconEditOrSubmit} 
