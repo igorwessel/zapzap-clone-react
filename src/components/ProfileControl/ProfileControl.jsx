@@ -1,16 +1,30 @@
 import React from 'react';
 import Anime from 'react-anime';
 import './ProfileControl.css'
-import avatarExample from '../UI/Button/images/default-user-image.png'
 import { withFirebaseHOC } from '../../Firebase';
+import ProfileControlForm from './Form/ProfileControlForm';
 
 
 
 class ProfileControl extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = { photo: null }
+        this.firebaseUser = this.props.firebase.currentUser()
+    }
+
+    componentDidMount() {
+        const { firebase } = this.props
+        firebase.findByEmail(this.firebaseUser.email).onSnapshot( user => {
+            this.setState({
+                photo: user.data().photo
+            })
+        })
+    }
 
     render() {
         return (
-            <Anime width={['0', '100%']}>
+            <Anime width={['0', '100%']} height={'0%'}>
                 <div className="side-profile">
                     <header>
                         <i className="fas fa-arrow-left"
@@ -20,18 +34,11 @@ class ProfileControl extends React.Component {
                     <div className="side-profile-details">
                         <div className="side-profile-details-image">
                             <Anime scale={[.5, .9]} delay={100}>
-                                <img src={this.props.firebase.currentUser().photoURL} alt="" />
+                                <img src={this.state.photo} alt="" />
                             </Anime>
                         </div>
                         <div className="side-profile-details-name">
-                            <p>Nome</p>
-                            <span>Igor Wessel</span>
-                            <i className="fas fa-pencil-alt"></i>
-                        </div>
-                        <div className="side-profile-details-message">
-                            <p>Recado</p>
-                            <span>...</span>
-                            <i className="fas fa-pencil-alt"></i>
+                            <ProfileControlForm />
                         </div>
                     </div>
                 </div>

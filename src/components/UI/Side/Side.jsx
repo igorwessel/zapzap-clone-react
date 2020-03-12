@@ -16,9 +16,11 @@ class Side extends React.Component {
         super(props)
         this.state = {
             profileControl: false,
+            photo: null
         }
         this.handleProfileClick = this.handleProfileClick.bind(this)
         this.handleProfileClickHide = this.handleProfileClickHide.bind(this)
+        this.firebaseUser = this.props.firebase.currentUser()
     }
 
     handleProfileClick(e) {
@@ -34,10 +36,20 @@ class Side extends React.Component {
         })
     }
 
+    componentDidMount(){
+        const { firebase } = this.props
+        if(this.firebaseUser) {
+            firebase.findByEmail(this.firebaseUser.email).onSnapshot( user => {
+                this.setState({
+                    photo: user.data().photo
+                })
+            })
+        }
+    }
+
     render() {
         const clickedinProfile = this.state.profileControl
         let profileControl;
-        let currentUser = this.props.firebase.currentUser();
 
         if (clickedinProfile) {
             profileControl = <ProfileControl clickHideOverlay={this.handleProfileClickHide} />
@@ -52,7 +64,7 @@ class Side extends React.Component {
                 <div className="side">
                     <header className='side-header'>
                         <div className="side-avatar">
-                            <Button iconImg={'null' ? avatarExample : currentUser.photoURL}
+                            <Button iconImg={this.state.photo}
                                 click={this.handleProfileClick} />
                         </div>
                         <div className="side-container-buttons">
@@ -78,23 +90,6 @@ class Side extends React.Component {
                             authorMessage='Igor'
                             dateMessage={'Hoje'}
                             message={'Opa!'} />
-                        <MessagePreview
-                            avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'Ontem'}
-                            message={'Opa!'} />
-                        <MessagePreview avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'01/03/2020'}
-                            message={'Opa!'} />
-                        <MessagePreview avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'Hoje'}
-                            message={'Bom dia!'} />
-                        <MessagePreview avatarImg={avatarExample}
-                            authorMessage='Igor'
-                            dateMessage={'Hoje'}
-                            message={'Lorem ipsum upsum ipsun ipsun ipsun ipsun ipsun ipsun ipsun!'} />
                     </div>
                 </div>
             </React.Fragment>

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css';
 import AppContainer from './components/UI/AppContainer/AppContainer'
-import Firebase, { FirebaseProvider, withFirebaseHOC } from './Firebase';
+import Firebase, { FirebaseProvider } from './Firebase';
 
 
 class App extends React.Component {

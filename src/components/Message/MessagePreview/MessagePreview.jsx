@@ -1,19 +1,21 @@
 import React from 'react'
 import './MessagePreview.css'
 
-const MessagePreview = props => {
-    return(
-        <div className="message-preview-contact">
-            <div className="avatar">
-                <img src={props.avatarImg} alt=""/>
+class MessagePreview extends React.Component {
+    render(){
+        return(
+            <div className="message-preview-contact">
+                <div className="avatar">
+                    <img src={this.props.avatarImg} alt=""/>
+                </div>
+                <div className="message-preview">
+                    <h2>{this.props.authorMessage}</h2>
+                    <span>{this.props.dateMessage}</span>
+                    <p>{this.props.message}</p>
+                </div>
             </div>
-            <div className="message-preview">
-                <h2>{props.authorMessage}</h2>
-                <span>{props.dateMessage}</span>
-                <p>{props.message}</p>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default MessagePreview
