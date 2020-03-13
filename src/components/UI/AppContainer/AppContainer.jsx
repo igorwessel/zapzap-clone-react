@@ -13,6 +13,7 @@ class AppContainer extends React.Component {
         this.state = {
             showApp: true,
             statusControl: false,
+            userInfo: null
         };
         this.handleStatusClick = this.handleStatusClick.bind(this);
         this.handleCloseStatus = this.handleCloseStatus.bind(this);
@@ -48,6 +49,7 @@ class AppContainer extends React.Component {
                     user.getById(response.user.email).then( (userDb) => {
                         if(userDb.exists) {
                             this.setState({
+                                userInfo: userDb.data(),
                                 showApp: true
                             })
                             return
@@ -57,6 +59,7 @@ class AppContainer extends React.Component {
                             user.photo = response.user.photoURL;
                             user.save().then( () => {
                                 this.setState({
+                                    userInfo: {name: user.name, email: user.email, photo: user.photo },
                                     showApp: true
                                 })
                             })
@@ -78,7 +81,7 @@ class AppContainer extends React.Component {
 
         let statusControl;
         if (clickedinStatus) {
-            statusControl = <StatusControl handleCloseStatus={this.handleCloseStatus}/>
+            statusControl = <StatusControl handleCloseStatus={this.handleCloseStatus} userInfo={this.state.userInfo}/>
         }
 
         return (
@@ -86,8 +89,8 @@ class AppContainer extends React.Component {
                     <div className='header'></div>
                     <div className="app-container">
                         {!this.state.showApp && statusControl}
-                        {this.state.showApp && <Side handleStatusClick={this.handleStatusClick}/>}
-                        {this.state.showApp && <Main />}
+                        {this.state.showApp && <Side handleStatusClick={this.handleStatusClick} userInfo={this.state.userInfo}/>}
+                        {this.state.showApp && <Main userInfo={this.state.userInfo} />}
                     </div>
                 </React.Fragment>
         );

@@ -10,7 +10,7 @@ class StatusControl extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            photo: null
+            photo: ''
         }
         this.firebaseUser = this.props.firebase.currentUser()
     }

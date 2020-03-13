@@ -46,12 +46,6 @@ const Firebase = {
     currentUser: () => {
         return firebase.auth().currentUser
     },
-
-    user: () => {
-        let userAuthenticated = Firebase.currentUser()
-        let user = new User(userAuthenticated.email)
-        return user
-    },
     
     // firestorage
     db: () => {
@@ -64,6 +58,12 @@ const Firebase = {
 
     findByEmail: (email) => {
         return Firebase.getRef().doc(email)
+    },
+
+    getData: (email) => {
+        Firebase.findByEmail(email).get().then( (doc) => {
+            return doc.data()
+        })
     },
     
     // hd
