@@ -7,29 +7,13 @@ import { withFirebaseHOC } from '../../Firebase'
 
 
 class StatusControl extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            photo: ''
-        }
-        this.firebaseUser = this.props.firebase.currentUser()
-    }
-
-    componentDidMount() {
-        const { firebase } = this.props
-        firebase.findByEmail(this.firebaseUser.email).onSnapshot( user => {
-            this.setState({
-                photo: user.data().photo
-            })
-        })
-    }
 
     render() {
         return (
             <React.Fragment>
                 <div className="status-side">
                     <header>
-                        <Button iconImg={this.state.photo} />
+                        <Button iconImg={this.props.userPhoto} />
                         <h2>Meu status</h2>
                         <span className='status-update'>Sem atualizações</span>
                     </header>
@@ -44,7 +28,7 @@ class StatusControl extends React.Component {
                     
                 </div>
                 <div className="status">
-                    <i className="fas fa-times" onClick={this.props.handleCloseStatus}></i>
+                    <i className="fas fa-times" onClick={this.props.handleStatusClick}></i>
                     <p>Clique no contato para ver as atualizacoes de status.</p>
                 </div>
             </React.Fragment>

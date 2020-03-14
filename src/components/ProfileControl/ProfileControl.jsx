@@ -14,17 +14,17 @@ class ProfileControl extends React.Component {
                 <div className="side-profile">
                     <header>
                         <i className="fas fa-arrow-left"
-                            onClick={this.props.clickHideOverlay}></i>
+                            onClick={this.props.handleProfileClick}></i>
                         <h3>Perfil</h3>
                     </header>
                     <div className="side-profile-details">
                         <div className="side-profile-details-image">
                             <Anime scale={[.5, .9]} delay={100}>
-                                <img src={this.props.userInfo.photo} alt="" />
+                                <img src={this.props.user.photo} alt="" />
                             </Anime>
                         </div>
                         <div className="side-profile-details-name">
-                            <ProfileControlForm />
+                            <ProfileControlForm username={this.props.user.name}/>
                         </div>
                     </div>
                 </div>

@@ -5,62 +5,30 @@ import Input from '../Input/Input'
 import iconStatus from '../Button/images/icon-status.png'
 import iconMessages from '../Button/images/icon-messages.png'
 import iconThreePoints from '../Button/images/icon-three-points.png'
-import avatarExample from '../Button/images/default-user-image.png'
+import defaultAvatar from '../Button/images/default-user-image.png'
 import MessagePreview from '../../Message/MessagePreview/MessagePreview'
 import ProfileControl from '../../ProfileControl/ProfileControl'
 import { withFirebaseHOC } from '../../../Firebase/index'
 
 
-class Side extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            profileControl: false,
-        }
-        this.handleProfileClick = this.handleProfileClick.bind(this)
-        this.handleProfileClickHide = this.handleProfileClickHide.bind(this)
-        this.firebaseUser = this.props.firebase.currentUser()
-        this.photo = '';
-    }
-
-    handleProfileClick(e) {
-        this.setState({
-            profileControl: true
-        })
-    }
-
-    handleProfileClickHide(e) {
-        document.querySelector('.side.none').classList.remove('none')
-        this.setState({
-            profileControl: false
-        })
-    }
-
-    componentDidMount(){
-        if(this.props.userInfo){
-            this.photo = this.props.userInfo.photo
-        }
-    }
-
+class Side extends React.Component { 
     render() {
-        const clickedinProfile = this.state.profileControl
         let profileControl;
 
-        if (clickedinProfile) {
-            profileControl = <ProfileControl clickHideOverlay={this.handleProfileClickHide} />
-            document.querySelector('.side').classList.add('none')
+        if (this.props.showProfile) {
+            profileControl = <ProfileControl 
+                                handleProfileClick={this.props.handleProfileClick}
+                                user={this.props.userInfo}/>
         }
-
-
-
         return (
             <React.Fragment>
                 {profileControl}
+                {!this.props.showProfile && 
                 <div className="side">
                     <header className='side-header'>
                         <div className="side-avatar">
-                            <Button iconImg={this.photo}
-                                click={this.handleProfileClick} />
+                            <Button iconImg={this.props.userInfo ? this.props.userInfo.photo : defaultAvatar}
+                                click={this.props.handleProfileClick} />
                         </div>
                         <div className="side-container-buttons">
                             <Button iconImg={iconStatus}
@@ -81,12 +49,12 @@ class Side extends React.Component {
                     </div>
                     <div className="messages-previews">
                         <MessagePreview
-                            avatarImg={avatarExample}
+                            avatarImg={defaultAvatar}
                             authorMessage='Igor'
                             dateMessage={'Hoje'}
                             message={'Opa!'} />
                     </div>
-                </div>
+                </div>}
             </React.Fragment>
         );
     }

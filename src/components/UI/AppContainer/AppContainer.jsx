@@ -9,27 +9,28 @@ import { User } from '../../../model/User'
 
 class AppContainer extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
+            userinfo: null,
             showApp: true,
-            statusControl: false,
-            userInfo: null
+            showStatus: false,
+            showProfile: false,
+            isFetching: false
         };
-        this.handleStatusClick = this.handleStatusClick.bind(this);
-        this.handleCloseStatus = this.handleCloseStatus.bind(this);
+        this.handleStatusClick = this.handleStatusClick.bind(this)
+        this.handleProfileClick = this.handleProfileClick.bind(this)
     }
 
     handleStatusClick(e) {
         this.setState({
-            statusControl: true,
-            showApp: false
+            showStatus: !this.state.showStatus,
+            showApp: !this.state.showApp
         })
     }
 
-    handleCloseStatus(e) {
+    handleProfileClick(e) {
         this.setState({
-            stateControl: false,
-            showApp: true
+            showProfile: !this.state.showProfile
         })
     }
 
@@ -38,7 +39,8 @@ class AppContainer extends React.Component {
         if(!user){
 
             this.setState({
-                showApp: false
+                showApp: false,
+                isFetching: true
             })
 
             this.props.firebase.initAuth()
@@ -49,8 +51,9 @@ class AppContainer extends React.Component {
                     user.getById(response.user.email).then( (userDb) => {
                         if(userDb.exists) {
                             this.setState({
-                                userInfo: userDb.data(),
-                                showApp: true
+                                userinfo: userDb.data(),
+                                showApp: true,
+                                isFetching: false
                             })
                             return
                         } else {
@@ -59,17 +62,24 @@ class AppContainer extends React.Component {
                             user.photo = response.user.photoURL;
                             user.save().then( () => {
                                 this.setState({
-                                    userInfo: {name: user.name, email: user.email, photo: user.photo },
-                                    showApp: true
+                                    userinfo: {
+                                        name: user.name,
+                                        email: user.email,
+                                        photo: user
+                                    },
+                                    showApp: true,
+                                    isFetching: false
                                 })
                             })
                         }
                     });
                 })
                 .catch(err => {
-                    this.initAuth()
+                    // this.initAuth()
                 })
         }
+
+        
     }
 
     componentDidMount(){
@@ -77,21 +87,26 @@ class AppContainer extends React.Component {
     }
 
     render() {
-        const clickedinStatus = this.state.statusControl
-
-        let statusControl;
-        if (clickedinStatus) {
-            statusControl = <StatusControl handleCloseStatus={this.handleCloseStatus} userInfo={this.state.userInfo}/>
+        let showStatus;
+        if (this.state.showStatus) {
+            showStatus = <StatusControl 
+                            handleStatusClick={this.handleStatusClick} 
+                            userPhoto={this.state.userinfo.photo}/>
         }
-
         return (
                 <React.Fragment>
                     <div className='header'></div>
+                    {!this.state.isFetching &&
                     <div className="app-container">
-                        {!this.state.showApp && statusControl}
-                        {this.state.showApp && <Side handleStatusClick={this.handleStatusClick} userInfo={this.state.userInfo}/>}
-                        {this.state.showApp && <Main userInfo={this.state.userInfo} />}
-                    </div>
+                        {!this.state.showApp && showStatus}
+                        {this.state.showApp && 
+                        <Side
+                            showProfile={this.state.showProfile}
+                            userInfo={this.state.userinfo}
+                            handleStatusClick={this.handleStatusClick}
+                            handleProfileClick={this.handleProfileClick}/>}
+                        {this.state.showApp && <Main/>}
+                    </div>}
                 </React.Fragment>
         );
     }

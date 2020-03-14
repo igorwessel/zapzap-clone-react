@@ -11,7 +11,7 @@ class ProfileControlForm extends React.Component {
         this.handleEnableEdit = this.handleEnableEdit.bind(this)
         this.firebaseUser = this.props.firebase.currentUser()
         this.state={
-            value: '',
+            value: this.props.username,
             disabled: true
         }
     }
@@ -35,15 +35,6 @@ class ProfileControlForm extends React.Component {
     handleEnableEdit(e){ 
         this.setState({
             disabled: false
-        })
-    }
-    
-    componentDidMount(){
-        const { firebase } = this.props
-        firebase.findByEmail(this.firebaseUser.email).onSnapshot( user => {
-            this.setState({
-                value: user.data().name
-            })
         })
     }
 
