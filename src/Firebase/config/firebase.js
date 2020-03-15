@@ -67,6 +67,21 @@ const Firebase = {
     // hd
     hd: () => {
         return firebase.storage()
+    },
+
+    savePhoto: (file, from) => {
+        return new Promise( (s, f) => {
+            console.log(file)
+            let uploadTask = Firebase.hd().ref(from).child(Date.now() + '_' + file.name).put(file);
+
+            uploadTask.on('state_changed', e => {
+                console.info('upload', e)
+            }, err => {
+                f(err)
+            }, () => {
+                s(uploadTask.snapshot)
+            })
+        })
     }
 }
 
