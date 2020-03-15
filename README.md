@@ -3,7 +3,7 @@
 - Projeto desenvolvido para pratica do React
 
 ## Para testar o projeto, acesse o link abaixo
-Demo: http://ambitious-lettuce.surge.sh/
+Demo: https://whatsapp-clone-react.netlify.com/
 
 
 ## Como iniciar o projeto
