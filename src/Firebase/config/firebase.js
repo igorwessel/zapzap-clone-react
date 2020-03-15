@@ -1,5 +1,3 @@
-import { User } from '../../model/User';
-
 const firebase = require('firebase/app')
 require('firebase/auth')
 require('firebase/firestore')

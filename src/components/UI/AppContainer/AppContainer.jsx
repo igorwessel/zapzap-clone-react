@@ -34,6 +34,14 @@ class AppContainer extends React.Component {
         })
     }
 
+    listenerUserInfoChange(){
+        this.props.firebase.findByEmail(this.state.userinfo.email).onSnapshot( user => {
+            this.setState({
+                userinfo: user.data()
+            })
+        })
+    }
+
     initAuth(){
         let user;
         if(!user){
@@ -55,7 +63,6 @@ class AppContainer extends React.Component {
                                 showApp: true,
                                 isFetching: false
                             })
-                            return
                         } else {
                             user.name = response.user.displayName;
                             user.email = response.user.email;
@@ -63,20 +70,22 @@ class AppContainer extends React.Component {
                             user.save().then( () => {
                                 this.setState({
                                     userinfo: {
-                                        name: user.name,
-                                        email: user.email,
-                                        photo: user
+                                        name: user.name, 
+                                        email: user.email, 
+                                        photo: user.photo
                                     },
                                     showApp: true,
                                     isFetching: false
                                 })
                             })
                         }
-                    });
+                        this.listenerUserInfoChange()
+                    })
                 })
                 .catch(err => {
                     // this.initAuth()
                 })
+                
         }
 
         

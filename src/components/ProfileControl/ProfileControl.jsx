@@ -1,5 +1,4 @@
 import React from 'react';
-import Anime from 'react-anime';
 import './ProfileControl.css'
 import { withFirebaseHOC } from '../../Firebase';
 import ProfileControlForm from './Form/ProfileControlForm';
@@ -10,8 +9,7 @@ class ProfileControl extends React.Component {
     
     render() {
         return (
-            <Anime width={['0', '100%']} height={'0%'}>
-                <div className="side-profile">
+            <div className="side-profile">
                     <header>
                         <i className="fas fa-arrow-left"
                             onClick={this.props.handleProfileClick}></i>
@@ -19,16 +17,15 @@ class ProfileControl extends React.Component {
                     </header>
                     <div className="side-profile-details">
                         <div className="side-profile-details-image">
-                            <Anime scale={[.5, .9]} delay={100}>
-                                <img src={this.props.user.photo} alt="" />
-                            </Anime>
+                            <img src={this.props.user.photo} alt=''/>
                         </div>
                         <div className="side-profile-details-name">
-                            <ProfileControlForm username={this.props.user.name}/>
+                            <ProfileControlForm 
+                                username={this.props.user.name}
+                                useremail={this.props.user.email}/>
                         </div>
                     </div>
-                </div>
-            </Anime>
+            </div>
         )
     };
 }

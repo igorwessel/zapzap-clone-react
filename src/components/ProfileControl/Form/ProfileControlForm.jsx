@@ -23,10 +23,9 @@ class ProfileControlForm extends React.Component {
     }
 
     handleSubmit(e){  
-        this.props.firebase.findByEmail(this.firebaseUser.email).update({
+        this.props.firebase.findByEmail(this.props.useremail).update({
             name: this.state.value
         })
-
         this.setState({
             disabled: true
         })

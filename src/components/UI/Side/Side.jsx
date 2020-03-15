@@ -13,16 +13,11 @@ import { withFirebaseHOC } from '../../../Firebase/index'
 
 class Side extends React.Component { 
     render() {
-        let profileControl;
-
-        if (this.props.showProfile) {
-            profileControl = <ProfileControl 
-                                handleProfileClick={this.props.handleProfileClick}
-                                user={this.props.userInfo}/>
-        }
         return (
             <React.Fragment>
-                {profileControl}
+                {this.props.showProfile && <ProfileControl 
+                                            handleProfileClick={this.props.handleProfileClick}
+                                            user={this.props.userInfo}/>}
                 {!this.props.showProfile && 
                 <div className="side">
                     <header className='side-header'>
