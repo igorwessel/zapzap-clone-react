@@ -7,8 +7,8 @@
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^7.10.0",
+    "framer-motion": "^1.9.1",
     "react": "^16.13.0",
-    "react-anime": "^3.0.3",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
     "surge": "^0.21.3"

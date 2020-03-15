@@ -1,11 +1,11 @@
 import React from 'react'
-import './Main.css'
+import './Home.css'
 
-class Main extends React.Component{
+class Home extends React.Component{
     render(){
         return (
-            <div className="messages">
-                <div className="logo-messages">
+            <div className="home">
+                <div className="logo-home">
                     <h2>Whatsapp Clone feito em React para aprendizado</h2>
                     <p>Desenvolvido por <a href='https://www.github.com/igorwessel' rel="noopener noreferrer" target='_blank'>Igor Wessel da Silva</a></p>
                     <p> Adicione um contato para começar a utilizar.</p>
@@ -15,4 +15,4 @@ class Main extends React.Component{
     }
 }
 
-export default Main
+export default Home

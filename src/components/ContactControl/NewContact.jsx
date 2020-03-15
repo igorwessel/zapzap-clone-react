@@ -1,6 +1,7 @@
 import React from 'react'
 import './NewContact.css'
 import { withFirebaseHOC } from '../../Firebase'
+import { motion } from 'framer-motion'
 
 
 class NewContact extends React.Component{
@@ -43,7 +44,14 @@ class NewContact extends React.Component{
 
     render(){
         return(
-            <div className="side-new-contact">
+            <motion.div
+                animate={{
+                    width: ['0%', '100%']
+                }} 
+                transition={{
+                    duration: .18
+                }}
+                className="side-new-contact">
                 <header>
                     <i className="fas fa-arrow-left"
                         onClick={this.props.handleNewContactClick}></i>
@@ -63,7 +71,7 @@ class NewContact extends React.Component{
                                 Adicionar
                     </button>
                 </form>
-            </div>
+            </motion.div>
         )
     }
 }

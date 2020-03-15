@@ -6,7 +6,7 @@ import iconStatus from '../Button/images/icon-status.png'
 import iconMessages from '../Button/images/icon-messages.png'
 import iconThreePoints from '../Button/images/icon-three-points.png'
 import defaultAvatar from '../Button/images/default-user-image.png'
-import MessagePreview from '../../Message/MessagePreview/MessagePreview'
+import MessagePreview from '../../Main/MessagePreview/MessagePreview'
 import ProfileControl from '../../ProfileControl/ProfileControl'
 import { withFirebaseHOC } from '../../../Firebase/index'
 import NewContact from '../../ContactControl/NewContact'
@@ -55,7 +55,8 @@ class Side extends React.Component {
                             <MessagePreview 
                                 key={contact.email}
                                 avatarImg={contact.photo}
-                                authorMessage={contact.name}/>
+                                authorMessage={contact.name}
+                                handleContactClick={this.props.handleContactClick}/>
                         ))}
                     </div>
                 </div>}

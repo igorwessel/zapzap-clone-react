@@ -4,7 +4,7 @@ import './MessagePreview.css'
 class MessagePreview extends React.Component {
     render(){
         return(
-            <div className="message-preview-contact">
+            <div className="message-preview-contact" onClick={this.props.handleContactClick}>
                 <div className="avatar">
                     <img src={this.props.avatarImg} alt=""/>
                 </div>

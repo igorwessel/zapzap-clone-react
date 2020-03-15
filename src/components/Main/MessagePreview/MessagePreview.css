@@ -2,6 +2,7 @@
     display: flex;
     justify-content: flex-start;
     height: 60px;
+    cursor: pointer;
     background-color: var(--side-container-input-bg-color);
     border-bottom: 1px solid var(--side-border-color);
 }

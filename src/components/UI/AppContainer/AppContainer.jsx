@@ -1,7 +1,8 @@
 import React from 'react'
 import './AppContainer.css';
 import Side from '../Side/Side';
-import Main from '../Main/Main';
+import Home from '../Home/Home';
+import Main from '../../Main/Main'
 import StatusControl from '../../../components/StatusControl/StatusControl';
 import { withFirebaseHOC } from '../../../Firebase/index'
 import { User } from '../../../model/User'
@@ -17,10 +18,12 @@ class AppContainer extends React.Component {
             showStatus: false,
             showProfile: false,
             showNewContact: false,
+            showContactMessage: false,
             isFetching: false
         };
         this.handleStatusClick = this.handleStatusClick.bind(this)
         this.handleProfileClick = this.handleProfileClick.bind(this)
+        this.handleContactClick = this.handleContactClick.bind(this)
         this.handleNewContactClick = this.handleNewContactClick.bind(this)
     }
 
@@ -40,6 +43,12 @@ class AppContainer extends React.Component {
     handleNewContactClick(e){
         this.setState({
             showNewContact: !this.state.showNewContact
+        })
+    }
+
+    handleContactClick(e) {
+        this.setState({
+            showContactMessage: !this.state.showContactMessage
         })
     }
 
@@ -98,6 +107,13 @@ class AppContainer extends React.Component {
                                 }
                             })
 
+                            arraycontacts.forEach( (contact, index) => {
+                                this.props.firebase.findByEmail(contact.email).onSnapshot( (doc) => {
+                                    arraycontacts[index] = doc.data()
+                                })
+                                this.props.firebase.findByEmail(contact.email).set(arraycontacts[index])
+                            })
+
                             this.setState({
                                 contacts: arraycontacts
                             })
@@ -123,9 +139,10 @@ class AppContainer extends React.Component {
                     <div className='header'></div>
                     {!this.state.isFetching &&
                     <div className="app-container">
-                        {!this.state.showApp && <StatusControl 
-                                                handleStatusClick={this.handleStatusClick} 
-                                                userPhoto={this.state.userinfo.photo} />}
+                        {!this.state.showApp &&
+                        <StatusControl 
+                                    handleStatusClick={this.handleStatusClick} 
+                                    userPhoto={this.state.userinfo.photo} />}
                         {this.state.showApp && 
                         <Side
                             showProfile={this.state.showProfile}
@@ -133,9 +150,15 @@ class AppContainer extends React.Component {
                             userInfo={this.state.userinfo}
                             contacts={this.state.contacts}
                             handleNewContactClick={this.handleNewContactClick}
+                            handleContactClick={this.handleContactClick}
                             handleStatusClick={this.handleStatusClick}
                             handleProfileClick={this.handleProfileClick}/>}
-                        {this.state.showApp && <Main/>}
+                        {this.state.showApp && 
+                        !this.state.showContactMessage &&
+                        <Home/>}
+                        {this.state.showContactMessage &&
+                        !this.state.showStatus &&
+                        <Main />}
                     </div>}
                 </React.Fragment>
         );

@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProfileControl.css'
+import { motion } from 'framer-motion'
 import { withFirebaseHOC } from '../../Firebase';
 import ProfileControlForm from './Form/ProfileControlForm';
 
@@ -27,7 +28,14 @@ class ProfileControl extends React.Component {
     
     render() {
         return (
-            <div className="side-profile">
+            <motion.div
+                animate={{
+                    width: ['0%', '100%']
+                }}
+                transition={{
+                    duration: .18
+                }} 
+                className="side-profile">
                     <header>
                         <i className="fas fa-arrow-left"
                             onClick={this.props.handleProfileClick}></i>
@@ -35,20 +43,31 @@ class ProfileControl extends React.Component {
                     </header>
                     <div className="side-profile-details">
                         <div className="side-profile-details-image">
-                            <img src={this.props.user.photo} 
+                            <motion.img
+                                 src={this.props.user.photo}
+                                 animate={{ 
+                                     scale: [.2, .8, 1],
+                                     opacity: [0, .6, 1]
+                                    }}
+                                 transition={{ duration: 1, times: [.20, .25, .30] }}
                                  alt=''
                                  onClick={(e) => this.handleClickEditPhoto(e)}/>
                             <input type="file"
                                    ref={input => this.inputFile = input}
                                    onChange={(e) => this.handleUploadPhoto(e)}/>
                         </div>
-                        <div className="side-profile-details-name">
+                        <motion.div
+                            animate={{
+                                opacity: [0, .6, 1]
+                            }}
+                            transition={{ duration: .5, times: [ .30, .35, .40], delay: .28}} 
+                            className="side-profile-details-name">
                             <ProfileControlForm 
                                 username={this.props.user.name}
                                 useremail={this.props.user.email}/>
-                        </div>
+                        </motion.div>
                     </div>
-            </div>
+            </motion.div>
         )
     };
 }

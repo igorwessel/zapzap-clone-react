@@ -1,16 +1,16 @@
-.messages {
+.home {
     margin: 0 auto;
     text-align: center;
 }
 
-.logo-messages {
+.logo-home {
     height: 100%;
     background-image: url(./images/logo.png);
     background-repeat: no-repeat;
     background-position: 250px 80px;
 }
 
-.logo-messages h2, .logo-messages p {
+.logo-home h2, .logo-home p {
     position: relative;
     width: 590px;
     top: 360px;
@@ -18,17 +18,17 @@
     color: var(--font-color);
 }
 
-.logo-messages a {
+.logo-home a {
     text-decoration: none;
     color: var(--link-color);
     font-weight: bolder;
 }
 
-.logo-messages p {
+.logo-home p {
     margin-top: 25px;
 }
 
-.logo-messages p:nth-of-type(2) {
+.logo-home p:nth-of-type(2) {
     width: 600px;
     border-top: 1px solid rgba(0, 0, 0, 0.151);
     padding: 25px;
