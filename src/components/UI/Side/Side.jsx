@@ -9,16 +9,23 @@ import defaultAvatar from '../Button/images/default-user-image.png'
 import MessagePreview from '../../Message/MessagePreview/MessagePreview'
 import ProfileControl from '../../ProfileControl/ProfileControl'
 import { withFirebaseHOC } from '../../../Firebase/index'
+import NewContact from '../../ContactControl/NewContact'
 
 
 class Side extends React.Component { 
     render() {
         return (
             <React.Fragment>
-                {this.props.showProfile && <ProfileControl 
-                                            handleProfileClick={this.props.handleProfileClick}
-                                            user={this.props.userInfo}/>}
+                {this.props.showProfile && 
+                <ProfileControl 
+                    handleProfileClick={this.props.handleProfileClick}
+                    user={this.props.userInfo}/>}
+                {this.props.showNewContact && 
+                <NewContact 
+                    handleNewContactClick={this.props.handleNewContactClick}
+                    user={this.props.userInfo}/>}
                 {!this.props.showProfile && 
+                !this.props.showNewContact &&
                 <div className="side">
                     <header className='side-header'>
                         <div className="side-avatar">
@@ -31,8 +38,9 @@ class Side extends React.Component {
                                 iconId='status'
                                 click={this.props.handleStatusClick} />
                             <Button iconImg={iconMessages}
-                                iconDesc='new message'
-                                iconId='newMessage' />
+                                iconDesc='new contact'
+                                iconId='new contact' 
+                                click={this.props.handleNewContactClick}/>
                             <Button iconImg={iconThreePoints}
                                 iconDesc='more options'
                                 iconId='moreOptions' />
@@ -43,11 +51,12 @@ class Side extends React.Component {
                         <Input placeholder='Procurar ou comecar uma nova conversa.' />
                     </div>
                     <div className="messages-previews">
-                        <MessagePreview
-                            avatarImg={defaultAvatar}
-                            authorMessage='Igor'
-                            dateMessage={'Hoje'}
-                            message={'Opa!'} />
+                        {this.props.contacts.map( (contact, key) => (
+                            <MessagePreview 
+                                key={contact.email}
+                                avatarImg={contact.photo}
+                                authorMessage={contact.name}/>
+                        ))}
                     </div>
                 </div>}
             </React.Fragment>

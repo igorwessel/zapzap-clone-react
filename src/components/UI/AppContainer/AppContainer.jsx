@@ -12,13 +12,16 @@ class AppContainer extends React.Component {
         super(props)
         this.state = {
             userinfo: null,
+            contacts: [],
             showApp: true,
             showStatus: false,
             showProfile: false,
+            showNewContact: false,
             isFetching: false
         };
         this.handleStatusClick = this.handleStatusClick.bind(this)
         this.handleProfileClick = this.handleProfileClick.bind(this)
+        this.handleNewContactClick = this.handleNewContactClick.bind(this)
     }
 
     handleStatusClick(e) {
@@ -31,6 +34,12 @@ class AppContainer extends React.Component {
     handleProfileClick(e) {
         this.setState({
             showProfile: !this.state.showProfile
+        })
+    }
+
+    handleNewContactClick(e){
+        this.setState({
+            showNewContact: !this.state.showNewContact
         })
     }
 
@@ -80,6 +89,19 @@ class AppContainer extends React.Component {
                             })
                         }
                         this.listenerUserInfoChange()
+                        this.props.firebase.getContacts(this.state.userinfo.email).onSnapshot( contacts => {
+                            let arraycontacts = contacts.docs.map( value => {
+                                return {
+                                    name: value.data().name,
+                                    email: value.data().email,
+                                    photo: value.data().photo
+                                }
+                            })
+
+                            this.setState({
+                                contacts: arraycontacts
+                            })
+                        })
                     })
                 })
                 .catch(err => {
@@ -96,22 +118,21 @@ class AppContainer extends React.Component {
     }
 
     render() {
-        let showStatus;
-        if (this.state.showStatus) {
-            showStatus = <StatusControl 
-                            handleStatusClick={this.handleStatusClick} 
-                            userPhoto={this.state.userinfo.photo}/>
-        }
         return (
                 <React.Fragment>
                     <div className='header'></div>
                     {!this.state.isFetching &&
                     <div className="app-container">
-                        {!this.state.showApp && showStatus}
+                        {!this.state.showApp && <StatusControl 
+                                                handleStatusClick={this.handleStatusClick} 
+                                                userPhoto={this.state.userinfo.photo} />}
                         {this.state.showApp && 
                         <Side
                             showProfile={this.state.showProfile}
+                            showNewContact={this.state.showNewContact}
                             userInfo={this.state.userinfo}
+                            contacts={this.state.contacts}
+                            handleNewContactClick={this.handleNewContactClick}
                             handleStatusClick={this.handleStatusClick}
                             handleProfileClick={this.handleProfileClick}/>}
                         {this.state.showApp && <Main/>}

@@ -54,6 +54,10 @@ const Firebase = {
         return Firebase.db().collection('/users')
     },
 
+    getContacts: (email) => {
+        return Firebase.getRef().doc(email).collection('contacts')
+    },
+
     findByEmail: (email) => {
         return Firebase.getRef().doc(email)
     },
@@ -63,10 +67,33 @@ const Firebase = {
             return doc.data()
         })
     },
+
+    addContact: (email, contact) => {
+        return Firebase.getRef()
+                .doc(email)
+                .collection('contacts')
+                .doc(btoa(contact.email))
+                .set(contact)
+    },
     
     // hd
     hd: () => {
         return firebase.storage()
+    },
+
+    savePhoto: (file, from) => {
+        return new Promise( (s, f) => {
+            console.log(file)
+            let uploadTask = Firebase.hd().ref(from).child(Date.now() + '_' + file.name).put(file);
+
+            uploadTask.on('state_changed', e => {
+                console.info('upload', e)
+            }, err => {
+                f(err)
+            }, () => {
+                s(uploadTask.snapshot)
+            })
+        })
     }
 }
 
