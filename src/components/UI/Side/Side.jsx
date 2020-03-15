@@ -22,7 +22,8 @@ class Side extends React.Component {
                     user={this.props.userInfo}/>}
                 {this.props.showNewContact && 
                 <NewContact 
-                    handleNewContactClick={this.props.handleNewContactClick}/>}
+                    handleNewContactClick={this.props.handleNewContactClick}
+                    user={this.props.userInfo}/>}
                 {!this.props.showProfile && 
                 !this.props.showNewContact &&
                 <div className="side">
@@ -50,11 +51,12 @@ class Side extends React.Component {
                         <Input placeholder='Procurar ou comecar uma nova conversa.' />
                     </div>
                     <div className="messages-previews">
-                        <MessagePreview
-                            avatarImg={defaultAvatar}
-                            authorMessage='Igor'
-                            dateMessage={'Hoje'}
-                            message={'Opa!'} />
+                        {this.props.contacts.map( (contact, key) => (
+                            <MessagePreview 
+                                key={contact.email}
+                                avatarImg={contact.photo}
+                                authorMessage={contact.name}/>
+                        ))}
                     </div>
                 </div>}
             </React.Fragment>

@@ -12,6 +12,7 @@ class AppContainer extends React.Component {
         super(props)
         this.state = {
             userinfo: null,
+            contacts: [],
             showApp: true,
             showStatus: false,
             showProfile: false,
@@ -88,6 +89,19 @@ class AppContainer extends React.Component {
                             })
                         }
                         this.listenerUserInfoChange()
+                        this.props.firebase.getContacts(this.state.userinfo.email).onSnapshot( contacts => {
+                            let arraycontacts = contacts.docs.map( value => {
+                                return {
+                                    name: value.data().name,
+                                    email: value.data().email,
+                                    photo: value.data().photo
+                                }
+                            })
+
+                            this.setState({
+                                contacts: arraycontacts
+                            })
+                        })
                     })
                 })
                 .catch(err => {
@@ -117,6 +131,7 @@ class AppContainer extends React.Component {
                             showProfile={this.state.showProfile}
                             showNewContact={this.state.showNewContact}
                             userInfo={this.state.userinfo}
+                            contacts={this.state.contacts}
                             handleNewContactClick={this.handleNewContactClick}
                             handleStatusClick={this.handleStatusClick}
                             handleProfileClick={this.handleProfileClick}/>}

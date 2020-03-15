@@ -54,6 +54,10 @@ const Firebase = {
         return Firebase.db().collection('/users')
     },
 
+    getContacts: (email) => {
+        return Firebase.getRef().doc(email).collection('contacts')
+    },
+
     findByEmail: (email) => {
         return Firebase.getRef().doc(email)
     },
@@ -62,6 +66,14 @@ const Firebase = {
         Firebase.findByEmail(email).get().then( (doc) => {
             return doc.data()
         })
+    },
+
+    addContact: (email, contact) => {
+        return Firebase.getRef()
+                .doc(email)
+                .collection('contacts')
+                .doc(btoa(contact.email))
+                .set(contact)
     },
     
     // hd
