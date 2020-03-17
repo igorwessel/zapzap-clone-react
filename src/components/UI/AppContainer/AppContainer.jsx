@@ -98,26 +98,20 @@ class AppContainer extends React.Component {
                             })
                         }
                         this.listenerUserInfoChange()
-                        this.props.firebase.getContacts(this.state.userinfo.email).onSnapshot( contacts => {
-                            let arraycontacts = contacts.docs.map( value => {
-                                return {
-                                    name: value.data().name,
-                                    email: value.data().email,
-                                    photo: value.data().photo
-                                }
-                            })
+                        this.props.firebase.getContacts(this.state.userinfo.email).onSnapshot( docs => {
+                            let contacts = []
 
-                            arraycontacts.forEach( (contact, index) => {
-                                this.props.firebase.findByEmail(contact.email).onSnapshot( (doc) => {
-                                    arraycontacts[index] = doc.data()
-                                })
-                                this.props.firebase.findByEmail(contact.email).set(arraycontacts[index])
+                            docs.forEach( doc => {
+                                let data = doc.data()
+                                data.id = doc.id
+                                contacts.push(data)
                             })
 
                             this.setState({
-                                contacts: arraycontacts
+                                contacts
                             })
                         })
+
                     })
                 })
                 .catch(err => {

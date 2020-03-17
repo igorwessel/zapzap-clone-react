@@ -53,7 +53,7 @@ class Side extends React.Component {
                     <div className="messages-previews">
                         {this.props.contacts.map( (contact, key) => (
                             <MessagePreview 
-                                key={contact.email}
+                                key={contact.id}
                                 avatarImg={contact.photo}
                                 authorMessage={contact.name}
                                 handleContactClick={this.props.handleContactClick}/>

@@ -21,7 +21,7 @@ class NewContact extends React.Component{
             return
         }
 
-        firebase.findByEmail(this.state.value).get().then( contact => {
+        firebase.findByEmail(this.state.value).onSnapshot(contact => {
             let contactData = contact.data()
 
             if(contactData){
