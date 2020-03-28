@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Input from 'components/Input'
 
+import './global.css'
+import AppContainer from 'components/AppContainer'
 
 const App = (props) => {
     return(
-        <Input />
+        <div className="bg-header" tabIndex="-1">
+            <AppContainer />
+        </div>
     )
 }
 

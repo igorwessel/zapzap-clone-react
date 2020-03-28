@@ -144,6 +144,7 @@
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addons": "^5.3.17",
     "@storybook/react": "^5.3.17",
+    "react-icons": "^3.9.0",
     "styled-components": "^5.0.1"
   }
 }
