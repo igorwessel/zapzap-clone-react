@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url(./components/UI/fonts/Roboto-Regular.ttf);
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 
 :root {
     --profile-bg-header: hsl(157, 92%, 42%);
@@ -21,12 +18,9 @@
 * {
     margin: 0;
     padding: 0;
+    outline: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
-}
-
-body, html {
-    height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header {
