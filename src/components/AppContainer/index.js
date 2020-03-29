@@ -10,6 +10,8 @@ import {
 import Home from 'components/Home'
 import Profile from 'components/Profile'
 import Chat from 'components/Chat'
+import Contacts from 'components/Contacts'
+
 import defaultProfileImg from 'assets/default-user-image.png'
 
 import styles from './styles.module.css'
@@ -18,16 +20,17 @@ const AppContainer = props => (
     <div className={styles.container}>
         <div className={styles.side}>
             {/* <Profile /> */}
-            <header className={styles.sideHeader}>
+            <Contacts />
+            {/* <header className={styles.sideHeader}>
                 <img src={defaultProfileImg} alt="User Default"/>
                 <div>
                     <FiCircle size={24} color='rgba(0,0,0, .5)'/>
                     <FiMessageSquare size={24} color='rgba(0,0,0, .5)'/>
                     <FiMoreVertical size={24} color='rgba(0,0,0, .5)'/>
                 </div>
-            </header>
+            </header> */}
 
-            <div className={styles.inputContainer}>
+            {/* <div className={styles.inputContainer}>
                 <label htmlFor="search-contact">
                     <FiSearch size={16} color='rgba(0,0,0, .3)'/>
                 </label>
@@ -35,10 +38,10 @@ const AppContainer = props => (
                     type="text" 
                     name="search-contact"
                     placeholder="Procurar ou começar uma nova conversa"/>
-            </div>
+            </div> */}
 
-            {/* Aqui iremos adicionar dinamicamente para cada conversa, contato. */}
-            <div className={styles.contactsContainer}>
+            {/* Here insert component for messages of user with another users. */}
+            {/* <div className={styles.contactsContainer}>
                 <div className={styles.previewMsg}>
                     <img src={defaultProfileImg} alt="User Profile"/>
                     <div className={styles.previewMsgDetails}>
@@ -52,12 +55,12 @@ const AppContainer = props => (
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> */}
+        </div> 
 
         {/* screen home */}
-        {/* <Home /> */}
-        <Chat />
+        <Home />
+        {/* <Chat /> */}
 
     </div>
 )

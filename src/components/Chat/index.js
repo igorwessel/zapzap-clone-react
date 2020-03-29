@@ -23,9 +23,9 @@ const Chat = props => (
         </header>
 
         <div className={styles.chat}>
-            {/* Enter component message here */}
+            {/* Create message component and insert here. */}
         </div>
-        
+
         <div className={styles.header}>
             <FaRegSmileBeam size={24} color="rgba(0, 0, 0, .5)"/>
             <input type="text"/>
