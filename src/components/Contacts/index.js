@@ -1,15 +1,15 @@
 import React from 'react'
-import { FiArrowLeft, FiChevronDown } from 'react-icons/fi'
+import { FiArrowLeft } from 'react-icons/fi'
 
 
 import defaultProfileImg from 'assets/default-user-image.png'
 import styles from './styles.module.css'
 
 
-const Contacts = props => (
+const Contacts = ({ handleClick }) => (
     <div className={styles.container}>
         <header>
-            <FiArrowLeft size={24}/>
+            <FiArrowLeft size={24} onClick={ handleClick }/>
             <h4>Contatos</h4>
         </header>
 

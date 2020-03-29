@@ -1,0 +1,110 @@
+.side {
+    width: 100%;
+    max-width: 451px;
+    height: 100%;
+    border-right: 1px solid rgba(151, 151, 151, .3);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    height: 70px;
+    background: rgb(236, 236, 236);
+}
+
+.header img{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.header svg {
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.input {
+    display: flex;
+    padding: 8px;
+    height: 50px;
+    background: #f7f7f7;
+    border-bottom: 1px solid rgba(151, 151, 151, .3);
+}
+
+.input input {
+    overflow-x: auto;
+    padding: 0 65px;
+    /* padding-left: 50px; */
+    width: 100%;
+}
+
+.input label {
+    position: absolute;
+}
+
+.input svg {
+    position: relative;
+    top: 8px;
+    left: 10px;
+}
+
+.previewMsg {
+    display: flex;
+    padding: 10px;
+}
+
+.previewMsg .previewMsgDetails {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.previewMsg .previewMsgDetails div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.previewMsg h2 {
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+.previewMsg span {
+    font-weight: lighter;
+    font-size: .8em;
+}
+
+
+.previewMsg img {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+
+.previewMsgDetails {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(151, 151, 151, .3);
+}
+
+.previewMsgDetails div:last-child {
+    align-items: center;
+    color: rgba(0, 0, 0, .7);
+}
+
+.previewMsgDetails p {
+    width: 75%;
+    max-height: 15px;
+    overflow: hidden;
+    margin-left: 5px;
+    font-size: .8em;
+}
+
+.previewMsgDetails svg {
+    position: relative;
+    top: 3px;
+}

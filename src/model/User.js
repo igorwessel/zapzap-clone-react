@@ -35,7 +35,7 @@ export class User extends Model{
         return this.findByEmail(this.email).set(this.toJSON())
     }
 
-    static getRef(){
+    getRef(){
         return Firebase.db().collection('/users')
     }
 

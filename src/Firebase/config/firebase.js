@@ -20,7 +20,7 @@ const Firebase = {
 
     // auth
     initAuth: () => {
-        return new Promise( (s, f) => {
+        return new Promise( (sucess, failed) => {
 
             let provider = new firebase.auth.GoogleAuthProvider();
 
@@ -29,13 +29,13 @@ const Firebase = {
                 let token = result.credential.accessToken;
                 let user = result.user
 
-                s({
+                sucess({
                     user, 
                     token
                 })
             })
             .catch(err => {
-                f(err)
+                failed(err)
             })
         })
     },

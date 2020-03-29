@@ -5,13 +5,13 @@ import { MdEdit } from 'react-icons/md'
 import styles from './styles.module.css'
 import defaultProfileImg from 'assets/default-user-image.png'
 
-const Profile = props => {
+const Profile = ({ handleClick }) => {
     const [name, setName] = useState('Contato')
 
     return(
         <div className={styles.container}>
             <header className={styles.header}>
-                <FiArrowLeft size={24}/>
+                <FiArrowLeft size={24} onClick={handleClick}/>
                 <span>Perfil</span>
             </header>
 

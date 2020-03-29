@@ -1,4 +1,6 @@
 .container {
+    width: 100%;
+    max-width: 451px;
     height: 100vh;
     background-color: #f0f0f0;
 }
