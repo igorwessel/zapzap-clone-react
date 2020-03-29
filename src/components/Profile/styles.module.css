@@ -1,0 +1,67 @@
+.container {
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container svg {
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    align-items: flex-end;
+    height: 108px;
+    padding: 20px;
+    background: #2ab664;
+    font-size: 1.2em;
+    color: white;
+}
+
+
+.header span {
+    margin-left: 25px;
+}
+
+.photo {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
+.photo img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.photo, .form {
+    background: #f0f0f0;
+}
+
+.form form{
+    background: white;
+    color: #009688;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form form label {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.form form div input {
+    color: #5c5c5c;
+    font-weight: 400;
+    font-size: 1.2em;
+    border-radius: 0;
+}
+
+.form div {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -34,8 +34,10 @@ body {
     background-color: var(--bg-header);
 }
 
-.button {
+button {
     cursor: pointer;
+    border: none;
+    background: transparent;
 }
 
 input {
