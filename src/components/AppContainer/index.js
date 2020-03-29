@@ -4,9 +4,12 @@ import {
     FiCircle, 
     FiMessageSquare, 
     FiSearch, 
-    FiChevronDown} from 'react-icons/fi'
+    FiChevronDown
+} from 'react-icons/fi'
 
+import Home from 'components/Home'
 import defaultProfileImg from 'assets/default-user-image.png'
+
 import styles from './styles.module.css'
 
 const AppContainer = props => (
@@ -41,16 +44,17 @@ const AppContainer = props => (
                             <span>11:44</span>
                         </div>
                         <div>
-                            <p>dasoko</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dictum odio sed nunc posuere consequat.</p>
                             <FiChevronDown size={24} color="rgba(0,0,0, .3)"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-            <h1>opa</h1>
-        </div>
+
+        {/* screen home */}
+        <Home />
+
     </div>
 )
 

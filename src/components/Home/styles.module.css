@@ -1,0 +1,38 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 7px solid #0fc55b;
+}
+
+h1, p, span {
+    margin-bottom: 15px;
+    color: #818181;
+}
+
+
+.line {
+    width: 70%;
+    margin-top: 25px;
+    border-bottom: 1px solid #b6b6b6;
+}
+
+a, a:active{
+    color: #0fc55b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+span svg {
+    position: relative;
+    margin-right: 10px;
+    top: 3px;
+}
