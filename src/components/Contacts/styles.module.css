@@ -3,6 +3,7 @@
     max-width: 451px;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid rgba(151, 151, 151, .3);
 }
 
 .container svg {

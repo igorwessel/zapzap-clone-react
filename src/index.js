@@ -18,6 +18,7 @@ const App = (props) => {
     useEffect(() => {
         login();
     }, [])
+    
     return (
         <div className="bg-header" tabIndex="-1">
             {isSigned && <AppContainer />}

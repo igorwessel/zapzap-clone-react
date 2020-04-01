@@ -8,7 +8,7 @@ import Contacts from 'components/Contacts'
 
 import styles from './styles.module.css'
 
-const AppContainer = props => {
+const AppContainer = ({ firebase }) => {
     const [showProfile, setShowProfile] = useState(false)
     const [showChat, setShowChat] = useState(false)
     const [showContacts, setShowContacts] = useState(false)
@@ -25,22 +25,26 @@ const AppContainer = props => {
         setShowContacts(!showContacts)
     }
 
+
     return (
-        <div className={styles.container}>
-            {showProfile && <Profile handleClick={handleClickShowProfile}/>}
-            {showContacts && <Contacts handleClick={handleClickShowContacts}/>}
-            {!showProfile &&
-            !showContacts && 
-            <HomePanel 
-                showProfile={handleClickShowProfile} 
-                showChat={handleClickShowChat} 
-                showContacts={handleClickShowContacts}/>}
+            <div className={styles.container}>
+                
+                {showProfile &&
+                <Profile handleClick={handleClickShowProfile}/>}
+                {showContacts && 
+                <Contacts handleClick={handleClickShowContacts}/>}
+                {!showProfile &&
+                !showContacts &&
+                <HomePanel 
+                    showProfile={handleClickShowProfile} 
+                    showChat={handleClickShowChat} 
+                    showContacts={handleClickShowContacts}/>}
 
-            {/* Home Screen and Chat*/}
-            {!showChat && <Home />}
-            {showChat && <Chat />}
+                {/* Home Screen and Chat*/}
+                {!showChat && <Home />}
+                {showChat && <Chat />}
 
-        </div>
+            </div>
     )
 }
 

@@ -3,6 +3,7 @@
     max-width: 451px;
     height: 100vh;
     background-color: #f0f0f0;
+    border-right: 1px solid rgba(151, 151, 151, .3);
 }
 
 .container svg {
