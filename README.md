@@ -1,16 +1,11 @@
-# Whatsapp-Web Clone with ReactJS
+# ZapZap clone with React.JS
 
 - Projeto desenvolvido para pratica do React
-
-## Para testar o projeto, acesse o link abaixo
-Demo: https://whatsapp-clone-react.netlify.com/
 
 ## Status do Projeto
 
 - Criar as mensagens
 - Criar as configurações
-- Deixar o site responsivo
-- Adicionar a funcionalidade na search para os contatos
 - Corrigir alguns bugs e otimizar a conexão com o Firebase
 
 
