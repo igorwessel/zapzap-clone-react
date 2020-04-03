@@ -8,7 +8,7 @@ import Contacts from 'components/Contacts'
 
 import styles from './styles.module.css'
 
-const AppContainer = ({ firebase }) => {
+const AppContainer = (props) => {
     const [showProfile, setShowProfile] = useState(false)
     const [showChat, setShowChat] = useState(false)
     const [showContacts, setShowContacts] = useState(false)

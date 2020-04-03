@@ -1,27 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
-import firebase from './services/firebase'
+import AppContainer from 'components/AppContainer'
+import userContext from './provider/userContext'
+
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { loginGoogle } from './provider/auth'
+import { firebase } from './services/firebase'
 
 import './global.css'
-import AppContainer from 'components/AppContainer'
 
 
 const App = (props) => {
-    const [isSigned, setisSigned] = useState(false)
 
-    const login = async () => {
-        await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        setisSigned(true)
-    }
+    const { initialising, user } = useAuthState(firebase.auth())
 
-    useEffect(() => {
-        login();
-    }, [])
-    
     return (
         <div className="bg-header" tabIndex="-1">
-            {isSigned && <AppContainer />}
+            <userContext.Provider value={{ user: user, initialising}}>
+                <AppContainer />
+            </userContext.Provider>
         </div>
     )
 }

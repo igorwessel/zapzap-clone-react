@@ -9,23 +9,10 @@ import {
 
 import defaultProfileImg from 'assets/default-user-image.png'
 
-import { useDocument } from 'react-firebase-hooks/firestore'
-import firebase from '../../services/firebase'
-
 import styles from  './styles.module.css'
 
 const HomePanel = ({ showProfile, showChat, showContacts }) => {
     const [isHover, setHover] = useState(false)
-    const email = firebase.auth().currentUser.email
-
-    const [value, loading, error ] = useDocument(
-        firebase.firestore().collection('/users').doc(email),
-        {
-            snapshotListenOptions: { includeMetadataChanges: true },
-        }
-    )
-
-
 
     function mouseOverContact(e) {
         setHover(!isHover)
