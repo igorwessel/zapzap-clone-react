@@ -1,0 +1,91 @@
+.container {
+    width: 100%;
+    max-width: 451px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(151, 151, 151, .3);
+}
+
+.container svg {
+    cursor: pointer;
+}
+
+.container header {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    background: #2ab664;
+    color: white;
+}
+
+.container header svg {
+    margin: 0 25px;
+}
+
+.container header h4 {
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+.form {
+    padding: 25px;
+    border-bottom: 1px solid rgba(151, 151, 151, .3);
+    width: 100%;
+    background: rgb(236, 236, 236);
+}
+
+.form form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form form button {
+    margin-top: 10px;
+    padding: 10px;
+    align-self: center;
+    width: 150px;
+    color: white;
+    font-weight: bold;
+    background: #0fc55b;
+    transition: filter .2s;
+}
+
+.form form button:hover {
+    filter: brightness(.9)
+}
+
+.form form label {
+    color: #2ab664;
+    font-weight: 600;
+}
+
+.form form input {
+    border-radius: 0;
+    padding: 10px;
+}
+
+.contact {
+    display: flex;
+    padding: 10px;
+}
+
+.contact div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.116);
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.contact h2 {
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+.contact img {
+    width: 60px;
+    height: 60px;
+}
