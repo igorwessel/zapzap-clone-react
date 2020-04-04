@@ -62,6 +62,14 @@
     border-radius: 0;
 }
 
+.form form div input:focus{
+    border-bottom: 2px solid #2ab664;
+}
+
+.form form div input:disabled {
+    background: transparent;
+}
+
 .form div {
     margin-top: 10px;
     display: flex;

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+
 import { 
     FiMoreVertical, 
     FiCircle, 
@@ -10,9 +11,12 @@ import {
 import defaultProfileImg from 'assets/default-user-image.png'
 
 import styles from  './styles.module.css'
+import { useSession } from '../../provider/auth'
 
 const HomePanel = ({ showProfile, showChat, showContacts }) => {
     const [isHover, setHover] = useState(false)
+    const { ...user } = useSession()
+
 
     function mouseOverContact(e) {
         setHover(!isHover)
@@ -22,7 +26,7 @@ const HomePanel = ({ showProfile, showChat, showContacts }) => {
         <div className={styles.side}>
             <header className={styles.header}>
                 <img 
-                    src={defaultProfileImg} 
+                    src={user ? user.photo : defaultProfileImg} 
                     alt="User Default" 
                     onClick={showProfile}/>
                 <div>

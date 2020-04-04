@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+
 import userContext from './userContext'
 import { firebase } from '../services/firebase'
 
@@ -12,7 +13,8 @@ export const useSession = () => {
 export const loginGoogle = async () => {
     try{
         const result = await firebase.auth().signInWithPopup(provider)
-
+        return result
+        
     } catch(err) {
         console.log(err)
         throw err

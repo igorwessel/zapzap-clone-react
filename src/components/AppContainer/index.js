@@ -12,7 +12,6 @@ const AppContainer = (props) => {
     const [showProfile, setShowProfile] = useState(false)
     const [showChat, setShowChat] = useState(false)
     const [showContacts, setShowContacts] = useState(false)
-
     function handleClickShowProfile(e) {
         setShowProfile(!showProfile)
     }

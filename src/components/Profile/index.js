@@ -1,12 +1,21 @@
 import React, { useState } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
-import { MdEdit } from 'react-icons/md'
+import { MdEdit, MdCheck } from 'react-icons/md'
 
 import styles from './styles.module.css'
 import defaultProfileImg from 'assets/default-user-image.png'
+import { useSession } from '../../provider/auth'
 
 const Profile = ({ handleClick }) => {
-    const [name, setName] = useState('Contato')
+    const { ...user } = useSession();
+    const [name, setName] = useState(user.name)
+    const [disabled, setDisabled] = useState(true)
+
+    const focus = (component) => {
+        if(component){
+            component.focus()
+        }
+    }
 
     return(
         <div className={styles.container}>
@@ -16,7 +25,7 @@ const Profile = ({ handleClick }) => {
             </header>
 
             <div className={styles.photo}>
-                <img src={defaultProfileImg} alt="User Profile"/>
+                <img src={user ? user.photo : defaultProfileImg} alt="User Profile"/>
             </div>
 
             <section className={styles.form}>
@@ -26,9 +35,24 @@ const Profile = ({ handleClick }) => {
                         <input 
                             type="text" 
                             name="display-name" 
+                            disabled={disabled}
+                            ref={(input) =>   {
+                                if(!disabled) {
+                                    focus(input)
+                                }
+                            }}
                             value={name}
                             onChange={e => setName(e.target.value)}/>
-                        <MdEdit size={24} color="#919191"/>
+                        {!disabled &&
+                        <MdCheck
+                            size={24} 
+                            color="#919191"
+                            onClick={e => setDisabled(!disabled)} />}
+                        {disabled &&
+                        <MdEdit 
+                            size={24} 
+                            color="#919191"
+                            onClick={e => setDisabled(!disabled)}/>}
                     </div>
                 </form>
             </section>
