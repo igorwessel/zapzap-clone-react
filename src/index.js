@@ -15,15 +15,19 @@ const App = (props) => {
     const [isLoading, setisLoading] = useState(true)
     const [user, setUser] = useState({})
 
+
     useEffect(() => {
 
         loginGoogle().then( response => {
             db.collection('/users').doc(response.user.email).onSnapshot(user => {
                 setUser(user.data())
+
             })
             setisLoading(false)
         })
     }, [])
+
+    
 
     return (
         <div className="bg-header" tabIndex="-1">

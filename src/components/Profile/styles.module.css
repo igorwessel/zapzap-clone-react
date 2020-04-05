@@ -25,19 +25,46 @@
     margin-left: 25px;
 }
 
-.photo {
+.photocontainer {
     display: flex;
     justify-content: center;
     padding: 25px;
 }
 
-.photo img {
+.photo {
+    width: 200px;
+    height: 200px;
+}
+
+.overlay {
+    opacity: 0;
+    position: absolute;
     width: 200px;
     height: 200px;
     cursor: pointer;
+    border-radius: 50%;
+    transition: background 1s;
 }
 
-.photo, .form {
+.overlay input[type='file']{
+    display: none;
+}
+
+.overlay:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, .72);
+}
+
+.overlay span {
+    position: relative;
+    user-select: none;
+    top: 48%;
+    left: 15%;
+    font-size: .8em;
+    color: white;
+}
+
+.photocontainer, .form {
     background: #f0f0f0;
 }
 
@@ -62,7 +89,7 @@
     border-radius: 0;
 }
 
-.form form div input:focus{
+.borderBottomGreen {
     border-bottom: 2px solid #2ab664;
 }
 

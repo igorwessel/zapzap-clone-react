@@ -3,11 +3,10 @@ import { FiArrowLeft } from 'react-icons/fi'
 import { MdEdit, MdCheck } from 'react-icons/md'
 
 import styles from './styles.module.css'
-import defaultProfileImg from 'assets/default-user-image.png'
 import { useSession } from '../../provider/auth'
 
 const Profile = ({ handleClick }) => {
-    const { ...user } = useSession();
+    const { ...user } = useSession()
     const [name, setName] = useState(user.name)
     const [disabled, setDisabled] = useState(true)
 
@@ -24,23 +23,23 @@ const Profile = ({ handleClick }) => {
                 <span>Perfil</span>
             </header>
 
-            <div className={styles.photo}>
-                <img src={user ? user.photo : defaultProfileImg} alt="User Profile"/>
+            <div className={styles.photocontainer}>
+                <img src={user.photo} alt="User Profile" className={styles.photo}/>
+                <div className={styles.overlay}>
+                    <span>Clique para editar a foto</span>
+                    <input type="file" name="user-photo-upload" id="user-photo-upload"/>
+                </div>
             </div>
 
             <section className={styles.form}>
                 <form>
                     <label htmlFor="display-name">Nome</label>
-                    <div>
+                    <div className={`${disabled ? "" : styles.borderBottomGreen}`}>
                         <input 
                             type="text" 
                             name="display-name" 
                             disabled={disabled}
-                            ref={(input) =>   {
-                                if(!disabled) {
-                                    focus(input)
-                                }
-                            }}
+                            ref={(input) => { if(!disabled) focus(input) }}
                             value={name}
                             onChange={e => setName(e.target.value)}/>
                         {!disabled &&
