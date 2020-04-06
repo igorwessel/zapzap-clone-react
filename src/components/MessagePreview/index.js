@@ -3,10 +3,8 @@ import React, { useState } from 'react'
 import styles from './styles.module.css'
 import { FiChevronDown } from 'react-icons/fi'
 
-import defaultProfileImg from 'assets/default-user-image.png'
 
-
-const MessagePreview = ({ showChat }) => {
+const MessagePreview = ({ showChat, name, photo }) => {
     const [isHover, setHover] = useState(false)
 
 
@@ -20,12 +18,12 @@ const MessagePreview = ({ showChat }) => {
             onMouseEnter={mouseOverContact}
             onMouseLeave={mouseOverContact}>
             <img 
-                src={defaultProfileImg} 
+                src={photo} 
                 alt="User Profile"
                 onClick={showChat}/>
             <div className={styles.details}>
                 <div>
-                    <h2>Contato</h2>
+                    <h2>{name}</h2>
                     <span>11:44</span>
                 </div>
                 <div>

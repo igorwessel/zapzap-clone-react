@@ -1,39 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
-
 import AppContainer from 'components/AppContainer'
-import userContext from './provider/userContext'
-
-import { db } from './services/firebase'
-import { loginGoogle } from './provider/auth'
-
 import './global.css' 
+import { Store } from './store'
 
 
-const App = (props) => {
-
-    const [isLoading, setisLoading] = useState(true)
-    const [user, setUser] = useState({})
-
-
-    useEffect(() => {
-
-        loginGoogle().then( response => {
-            db.collection('/users').doc(response.user.email).onSnapshot(user => {
-                setUser(user.data())
-
-            })
-            setisLoading(false)
-        })
-    }, [])
-
-    
-
+const App = () => {
     return (
         <div className="bg-header" tabIndex="-1">
-            <userContext.Provider value={{ user: user}}>
-                {!isLoading && <AppContainer />}
-            </userContext.Provider>
+            <Provider store={Store}>
+                <AppContainer />
+            </Provider>
         </div>
     )
 }

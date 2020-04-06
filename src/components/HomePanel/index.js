@@ -8,19 +8,17 @@ import {
     FiSearch
 } from 'react-icons/fi'
 
-import defaultProfileImg from 'assets/default-user-image.png'
-
 import styles from  './styles.module.css'
 import { useSession } from '../../provider/auth'
 
-const HomePanel = ({ showProfile, showChat, showContacts }) => {
+const HomePanel = ({ showProfile, showChat, showContacts, contacts, loadingContacts }) => {
     const { ...user } = useSession()
 
     return (
         <div className={styles.side}>
             <header className={styles.header}>
                 <img 
-                    src={user ? user.photo : defaultProfileImg} 
+                    src={user.photo} 
                     alt="User Default" 
                     onClick={showProfile}/>
                 <div>
@@ -41,7 +39,14 @@ const HomePanel = ({ showProfile, showChat, showContacts }) => {
             </div>
 
             <div className={styles.contacts}>
-                <MessagePreview showChat={showChat}/>
+                {!loadingContacts && 
+                contacts.map(contact => (
+                    <MessagePreview 
+                        key={contact.email}
+                        name={contact.name}
+                        photo={contact.photo}
+                        showChat={showChat}/>
+                ))}
             </div>
         </div> 
 

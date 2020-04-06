@@ -16,5 +16,22 @@ const config = {
 firebase.initializeApp(config)
 
 const db = firebase.firestore();
+const auth = firebase.auth();
 
-export { firebase, db }
+const provider = new firebase.auth.GoogleAuthProvider();
+
+export const loginGoogle = async () => {
+    try{
+        const result = await auth.signInWithPopup(provider)
+        const userdb = await db.collection('/users').doc(result.user.email).get()
+        return userdb.data()
+        
+    } catch(err) {
+        console.log(err)
+        throw err
+    }
+}   
+
+export const signOut = () => auth.signOut();
+
+export { firebase }

@@ -3,11 +3,9 @@ import { FiArrowLeft } from 'react-icons/fi'
 import { MdEdit, MdCheck } from 'react-icons/md'
 
 import styles from './styles.module.css'
-import { useSession } from '../../provider/auth'
 
 const Profile = ({ handleClick }) => {
-    const { ...user } = useSession()
-    const [name, setName] = useState(user.name)
+    const [name, setName] = useState('Contato')
     const [disabled, setDisabled] = useState(true)
 
     const focus = (component) => {
@@ -24,7 +22,7 @@ const Profile = ({ handleClick }) => {
             </header>
 
             <div className={styles.photocontainer}>
-                <img src={user.photo} alt="User Profile" className={styles.photo}/>
+                <img src={''} alt="User Profile" className={styles.photo}/>
                 <div className={styles.overlay}>
                     <span>Clique para editar a foto</span>
                     <input type="file" name="user-photo-upload" id="user-photo-upload"/>
