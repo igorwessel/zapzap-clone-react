@@ -1,4 +1,4 @@
-# Whatsapp-Web Clone with ReactJS
+# ZapZap Clone
 
 - Projeto desenvolvido para pratica do React
 
